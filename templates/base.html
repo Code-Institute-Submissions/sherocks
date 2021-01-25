@@ -18,12 +18,14 @@
     {% block corecss %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
     {% block extra_css %}
     {% endblock %}
 
     {% block corejs %}
+    <script src="https://kit.fontawesome.com/562a2db8bd.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -42,15 +44,90 @@
 </head>
 
 <body>
-    <header class="container-fluid fixed-top"></header>
-    {% if messages %}
-    <div class="message-container"></div>
-    {% endif %}
+    <header class="container-fluid fixed-top">
+        {% if messages %}
+        <div class="message-container h-10 bg-dark"></div>
+        {% endif %}
+
+        <!--Customized Bootstrap navbar with logo on the left and toggler-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="/media/logo.png" width="50" height="50" alt="She Rocks logo">
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Dresses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Outerwear</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Top</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Bottom</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Bags</a>
+                    </li>
+                    <li class="nav-item">
+                        <form class="form-inline my-2 my-lg-0" method="GET" action="">
+                    <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                    </li>
+                </ul>
+            </div>
+
+            <ul class="float-right">
+                <li class="list-inline-item">
+                    <a class="nav-link" href="">
+                        <div class="text-center">
+                            <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="nav-link" href="">
+                        <div class="text-center">
+                            <div><i class="fas fa-user fa-lg"></i></div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
     {% block page_header %}
     {% endblock %}
 
     {% block content %}
+    {% endblock %}
+
+<footer>
+<div class="row">
+    <div class="col-12 bg-dark text-center">
+        <img src="/media/logo.png" class="logo" alt="She rocks logo">
+    </div>
+</div>
+<div class="row text-center">
+    <div class="col-sm-12 col-md-4">Repeat menu</div>
+    <div class="col-sm-12 col-md-4">Icons</div>
+    <div class="col-sm-12 col-md-4">Address</div>
+</div>
+</footer>
+
+    {% block footer %}
     {% endblock %}
 
     {% block postload_js %}
