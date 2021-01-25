@@ -5,6 +5,7 @@
     padding: 0;
     border: 0;
     font-size: 10px;
+    font-family: "Poppins", sans-serif;
 }
 
 html{
@@ -41,6 +42,12 @@ h1{
     background-color: rgba(0, 0, 0, 0.5);
     height: 20%;
     width: 80%;
+}
+
+#third-block{
+    background-image: url("/media/morgan.jpg");
+    background-size: cover;
+    position: relative;
 }
 
 

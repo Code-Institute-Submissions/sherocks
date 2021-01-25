@@ -44,7 +44,7 @@
 </head>
 
 <body>
-    <header class="container-fluid fixed-top">
+    <header class="container-fluid fixed-top p-0">
         {% if messages %}
         <div class="message-container h-10 bg-dark"></div>
         {% endif %}
@@ -114,18 +114,7 @@
     {% block content %}
     {% endblock %}
 
-<footer>
-<div class="row">
-    <div class="col-12 bg-dark text-center">
-        <img src="/media/logo.png" class="logo" alt="She rocks logo">
-    </div>
-</div>
-<div class="row text-center">
-    <div class="col-sm-12 col-md-4">Repeat menu</div>
-    <div class="col-sm-12 col-md-4">Icons</div>
-    <div class="col-sm-12 col-md-4">Address</div>
-</div>
-</footer>
+    {% include "includes/footer.html" %}
 
     {% block footer %}
     {% endblock %}
