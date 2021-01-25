@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block page_header %}
+<div class="container"></div>
+    {% endblock %}
+
+{% block content %}
+
+    
+    <h2 class="page-title text-center">All products</h2>
+
+    <div class="row d-flex justify-content-center">
+        <div class="product-container col-10 offset-1">
+            <div class="row mt-1 mb-2">
+                <div class="row">
+                    {% for i in products %}
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="{{ i.image_url }}" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ i.name }}</h5>
+                                <p class="card-text">{{ i.brand }}</p>
+                                <p class="card-text">{{ i.price }}</p>
+                            </div>
+                            <div class="card-body">
+                                <a href="#" class="card-link"><i class="fas fa-shopping-bag"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% endblock %}

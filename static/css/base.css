@@ -18,10 +18,19 @@ h1{
     font-size: 2.8rem;
 }
 
+h2{
+    font-family: "Montserrat Subrayada", sans-serif;
+}
+
 /* -------------------------------- Logo */
 .logo{
     width: 5rem;
     height: 5rem;
+}
+
+/* -------------------------------- Common throughout the pages */
+.page-title{
+    padding-top: 10rem;
 }
 
 /* -------------------------------- Index */
