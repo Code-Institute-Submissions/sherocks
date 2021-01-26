@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block page_header %}
+{% include "includes/register-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid product-detail-container">
+    <div class="row title-product-detail">
+        <div class="col text-center">
+            <h2>{{ product.category }} by {{product.brand }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-6 product-detail-column"><img src="{{ product.image_url }}" class="img-responsive"
+                width="100%" alt="{{ product.name }} by {{ product.brand }}"></div>
+
+        <div class="col-12 col-sm-6 product-detail-column justify-content-center">
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="card-title poppins">{{ product.name }}</h2>
+                        <h3 class="card-title poppins">{{ product.brand }}</h3>
+                        <h4 class="card-title poppins">
+                            <div class="row price-row">
+                                <div class="col-6">€ {{ product.price }}</div>
+                                <div class="col-6">
+                                    <a href="" class="btn btn-danger uppercase">Add to bag <i class="fas fa-shopping-bag"></i></a></div>
+                            </div>
+                        </h4>
+                        <h5 class="mb-0 subrayada">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                                Description
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body poppins">
+                            {{ product.description }}
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0 subrayada">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                aria-expanded="false" aria-controls="collapseTwo">
+                                Material
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body poppins">
+                            {{ product.material }}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

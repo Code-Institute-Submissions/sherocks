@@ -8,8 +8,17 @@
     font-family: "Poppins", sans-serif;
 }
 
-html{
+html, body{
     height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.base-container{
+    flex: 1 0 auto;
 }
 
 /* -------------------------------- Typography */
@@ -18,8 +27,16 @@ h1{
     font-size: 2.8rem;
 }
 
-h2{
+h2, .subrayada{
     font-family: "Montserrat Subrayada", sans-serif;
+}
+
+.poppins {
+    font-family: "Poppins", sans-serif;
+}
+
+.uppercase{
+    text-transform: uppercase;
 }
 
 /* -------------------------------- Logo */
@@ -28,7 +45,7 @@ h2{
     height: 5rem;
 }
 
-/* -------------------------------- Common throughout the pages */
+/* -------------------------------- Common elements throughout the pages */
 .page-title{
     padding-top: 10rem;
 }
@@ -59,6 +76,31 @@ h2{
     position: relative;
 }
 
+/* -------------------------------- Product Detail */
+.title-product-detail{
+    padding-top: 3rem;
+}
+
+.alert-register-banner{
+    padding-top: 8rem;
+}
+
+.product-detail-container{
+    padding-bottom: 6rem;
+}
+
+.product-detail-column{
+    margin: auto;
+}
+
+.price-row{
+    padding: 3rem 0;
+}
+
+/* -------------------------------- Footer */
+footer{
+    flex-shrink: 0;
+}
 
 /* -------------------------------- Media Queries */
 
@@ -70,6 +112,10 @@ h2{
 
     h1{
         font-size:3rem;
+    }
+
+    .product-detail-container{
+    padding-bottom: 0;
     }
 }
 
