@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}  v
 
-
+{% block extra_title %}{{ product.name }}{% endblock %}
 {% block page_header %}
 {% include "includes/register-banner.html" %}
 {% endblock %}

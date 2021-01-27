@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %} 
+
+{% block extra_title %}Shopping Bag{% endblock %}
+
+{% block page_header %}
+{% include "includes/register-banner.html" %}
+{% endblock %}
+
+{% block content %}
+<h2>test</h2>
+
+
+{% if bag_items %}
+<h3>There is something here</h3>
+{% else %}
+<h3>Go back and buy something</h3>
+<a class="btn btn-dark" href="{% url 'home' %}" role="button">Home Page</a>
+{% endif %}
+
+
+{% endblock %}

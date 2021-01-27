@@ -52,7 +52,6 @@ def all_products(request):
     current_sorting = f"{sort}_{direction}"
     get_category_name = get_category
 
-    print(categories)
     context = {
         "products": products,
         "search_term": query,
