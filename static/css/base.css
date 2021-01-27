@@ -47,6 +47,13 @@ h2, .subrayada{
     height: 5rem;
 }
 
+/* -------------------------------- Navbar */
+
+nav{
+    border-bottom: 1px solid black;
+}
+
+
 /* -------------------------------- Common elements throughout the pages */
 .page-title{
     padding-top: 10rem;
@@ -78,7 +85,20 @@ h2, .subrayada{
     position: relative;
 }
 
-/* -------------------------------- Product by Category */
+/* -------------------------------- Products */
+
+.card-deck{
+    margin-top: 10px;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: .5rem;
+}
+
+.sort-dropdown{
+    width: 12rem;
+    margin-left: 2rem;
+}
 
 
 /* -------------------------------- Product Detail */
@@ -105,6 +125,7 @@ h2, .subrayada{
 /* -------------------------------- Footer */
 footer{
     flex-shrink: 0;
+    border-top: 1px solid black;
 }
 
 /* -------------------------------- Media Queries */
