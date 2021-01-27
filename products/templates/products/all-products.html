@@ -4,37 +4,63 @@
 
 {% block page_header %}
 <div class="container"></div>
-    {% endblock %}
+{% endblock %}
 
 {% block content %}
 
-    
-    <h2 class="page-title text-center">All products</h2>
 
-    <div class="row d-flex justify-content-center">
-        <div class="product-container col-10 offset-1">
-            <div class="row mt-1 mb-2">
-                <div class="row">
-                    {% for i in products %}
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="{{ i.image_url }}" alt="Card image cap">
-                            <div class="card-body">
-                                <a href="{% url 'product_detail' i.id %}"><h5 class="card-title">{{ i.name }}</h5></a>
-                                <p class="card-text">{{ i.brand }}</p>
-                                <p class="card-text">{{ i.price }}</p>
-                            </div>
-                            <div class="card-body">
-                                <a href="#" class="card-link"><i class="fas fa-shopping-bag"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    {% endfor %}
+<h2 class="page-title text-center"></h2>
+
+
+<div class="product-container justify-content-center">
+
+    <div class="row mb-2">
+        <div class="col-sm-12">
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort by
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=desc">Price high-low <i class="fas fa-sort-down"></i></a>
+                    <a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=asc">Price low-high <i class="fas fa-sort-up"></i></a>
+                    <a class="dropdown-item" href="{% url 'products' %}?sort=brand&direction=asc">Brand A-Z <i class="fas fa-sort-up"></i></a>
+                    <a class="dropdown-item" href="{% url 'products' %}?sort=brand&direction=desc">Brand Z-A <i class="fas fa-sort-down"></i></a>
+                    <a class="dropdown-item" href="{% url 'products' %}?sort=name&direction=asc">Name A-Z <i class="fas fa-sort-up"></i></a>
+                    <a class="dropdown-item" href="{% url 'products' %}?sort=name&direction=desc">Name Z-A <i class="fas fa-sort-down"></i></a>
+                    <a class="dropdown-item" href="{% url 'products' %}">Show All products</a>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-deck">
+                {% for i in products %}
 
-    {% endblock %}
+                <div class="card" style="width: 30rem;">
+                    <img class="card-img-top" src="{{ i.image_url }}" alt="Card image cap">
+                    <div class="card-body">
+                        <a href="{% url 'product_detail' i.id %}">
+                            <h5 class="card-title">{{ i.name }}</h5>
+                        </a>
+                        <p class="card-text">{{ i.brand }}</p>
+                        <p class="card-text">{{ i.price }}</p>
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="card-link"><i class="fas fa-shopping-bag"></i></a>
+                    </div>
+                </div>
+                {% empty %}
+                <h2>No products here!</h2>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
