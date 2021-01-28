@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %} 
+{% load static %}
 
 {% block extra_title %}Shopping Bag{% endblock %}
 
@@ -8,13 +8,87 @@
 {% endblock %}
 
 {% block content %}
-<h2>test</h2>
+<h2 class="text-center">Your Shopping Bag</h2>
 
 
 {% if bag_items %}
-<h3>There is something here</h3>
+
+<div class="container shopping-bag-container">
+    <div class="row">
+        <div class="col">
+            <h3 class="text-center">Just one step closer to be a rock goddess!</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="row">
+                <div class="col total-items-in-bag">
+                    <h4>{{ product_count }} items:</h4>
+                </div>
+            </div>
+            {% for item in bag_items %}
+            <div class="row">
+                <div class="col-4">
+                    <img src="{{ item.product.image }}" alt="{{ item.product.name }}">
+                </div>
+                <div class="col-4">{{ item.product.name }}</div>
+                <div class="col-2">{{ item.quantity }}</div>
+                <div class="col-2">&euro; {{ item.product.price }}</div>
+
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-12 col-md-6">
+            <h4>Costs details</h4>
+            <div class="row">
+                <div class="col">
+                    Bag Total: &euro; {{ total|floatformat:2 }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    Delivery: &euro; {{ delivery|floatformat:2 }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    Grand Total: &euro; {{ grand_total|floatformat:2 }}
+                </div>
+
+                {% if free_delivery_delta > 0 %}
+                <div class="col">
+                    <p class="mb-1 text-danger">
+                        You could get free delivery by spending just <strong>${{ free_delivery_delta }}</strong> more!
+                    </p>
+                </div>
+                {% endif %}
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a href="{% url 'products' %}" class="btn btn-light border border-dark rounded-0 mt-5">
+
+                        <i class="fas fa-chevron-left"></i>
+
+                        <span class="text-uppercase">Back to Shopping</span>
+                    </a>
+                    <a href="" class="btn btn-dark rounded-0 mt-5">
+
+                        <i class="fab fa-cc-stripe"></i>
+
+                        <span class="text-uppercase">Secure Checkout</span>
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
 {% else %}
-<h3>Go back and buy something</h3>
+<h3>It looks like you haven't shopped anything yet<br>
+    Go back and buy something</h3>
 <a class="btn btn-dark" href="{% url 'home' %}" role="button">Home Page</a>
 
 {% endif %}
