@@ -9,6 +9,7 @@ class ProductAdmin(admin.ModelAdmin):
         'name',
         'brand',
         'description',
+        'has_sizes',
         'material',
         'price',
         'image',
