@@ -9,11 +9,11 @@
 {% block content %}
 
 
-<h2 class="page-title text-center">
+<h2 class="page-title text-center uppercase">
     {% if not current_categories == None %}
-        {{ category_name }}
+    {{ category_name }}
     {% else %}
-        Collection
+    Collection
     {% endif %}
 </h2>
 
@@ -24,7 +24,8 @@
 {% endif %}
 
 <div class="product-container justify-content-center">
-
+    {% if products %}
+    {% if current_categories %}
     <div class="row mb-2">
         <div class="col-sm-12">
             <div class="dropdown text-center">
@@ -34,8 +35,36 @@
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=desc">Price high-low <i
+                    <a class="dropdown-item"
+                        href="{% url 'products' %}?category={{ category_id }}&sort=price&direction=desc">Price
+                        high-low <i class="fas fa-sort-down sort-direction-icon"></i></a>
+                    <a class="dropdown-item" href="{% url 'products' %}?category={{ category_id }}&sort=price&direction=asc">Price low-high <i
+                            class="fas fa-sort-up sort-direction-icon"></i></a>
+                    <a class="dropdown-item" href="{% url 'products' %}?category={{ category_id }}&sort=brand&direction=asc">Brand A-Z <i
+                            class="fas fa-sort-up sort-direction-icon"></i></a>
+                    <a class="dropdown-item" href="{% url 'products' %}?category={{ category_id }}&sort=brand&direction=desc">Brand Z-A <i
                             class="fas fa-sort-down sort-direction-icon"></i></a>
+                    <a class="dropdown-item" href="{% url 'products' %}?category={{ category_id }}&sort=name&direction=asc">Name A-Z <i
+                            class="fas fa-sort-up sort-direction-icon"></i></a>
+                    <a class="dropdown-item" href="{% url 'products' %}?category={{ category_id }}&sort=name&direction=desc">Name Z-A <i
+                            class="fas fa-sort-down sort-direction-icon"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row mb-2">
+        <div class="col-sm-12">
+            <div class="dropdown text-center">
+                <a class="btn btn-secondary dropdown-toggle sort-dropdown" href="#" role="button" id="dropdownMenuLink"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sort by
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item"
+                        href="{% url 'products' %}?sort=price&direction=desc">Price
+                        high-low <i class="fas fa-sort-down sort-direction-icon"></i></a>
                     <a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=asc">Price low-high <i
                             class="fas fa-sort-up sort-direction-icon"></i></a>
                     <a class="dropdown-item" href="{% url 'products' %}?sort=brand&direction=asc">Brand A-Z <i
@@ -50,6 +79,9 @@
             </div>
         </div>
     </div>
+    {% endif %}
+    {% endif %}
+
 
     <div class="row">
         <div class="col-sm-12">
@@ -61,7 +93,7 @@
                     <img class="card-img-top" src="{{ i.image_url }}" alt="Card image cap">
                     <div class="card-body">
                         <a href="{% url 'product_detail' i.id %}">
-                            <h5 class="card-title">{{ i.name }}</h5>
+                            <h5 class="card-title">{{ i.name|upper }}</h5>
                         </a>
                         <p class="card-text">{{ i.brand }}</p>
                         <p class="card-text">{{ i.price }}</p>
@@ -71,7 +103,9 @@
                     </div>
                 </div>
                 {% empty %}
-                <h2>No matching items</h2>
+                <div class="text-center no-match">
+                    <h2>No matching items</h2>
+                </div>
                 {% endfor %}
             </div>
         </div>

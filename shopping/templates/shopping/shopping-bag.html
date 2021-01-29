@@ -12,7 +12,11 @@
 
 
 {% if bag_items %}
-
+    {{ bag_items }}
+    <br>
+    <br>
+    {{ request.session.bag }}
+    <br>
 <div class="container shopping-bag-container">
     <div class="row">
         <div class="col">
