@@ -12,11 +12,6 @@
 
 
 {% if bag_items %}
-    {{ bag_items }}
-    <br>
-    <br>
-    {{ request.session.bag }}
-    <br>
 <div class="container shopping-bag-container">
     <div class="row">
         <div class="col">
@@ -24,27 +19,82 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-12 col-md-6">
+            <div class="row mt-5 mb-3">
+                <div class="col total-items-in-bag uppercase">
+                    <h4>{{ product_count }} items in my bag:</h4>
+                </div>
+            </div>
             <div class="row">
-                <div class="col total-items-in-bag">
-                    <h4>{{ product_count }} items:</h4>
+                <div class="col-4">
+                    <h4 class="uppercase">image</h4>
+                </div>
+                <div class="d-none d-lg-block col-lg-4">
+                    <h4 class="uppercase">name</h4>
+                </div>
+                <div class="col-4 col-lg-2">
+                    <h4 class="uppercase">quantity</h4>
+                </div>
+                <div class="col-4 col-lg-2">
+                    <h4 class="uppercase">price</h4>
                 </div>
             </div>
             {% for item in bag_items %}
-            <div class="row">
+
+            <div class="row mb-3">
                 <div class="col-4">
                     <img src="{{ item.product.image }}" alt="{{ item.product.name }}">
                 </div>
-                <div class="col-4">{{ item.product.name }}</div>
-                <div class="col-2">{{ item.quantity }}</div>
-                <div class="col-2">&euro; {{ item.product.price }}</div>
+                <div class="d-none d-lg-block col-lg-4">{{ item.product.name }}</div>
+                <div class="col-4 col-lg-2">
+                    <!--Form From Code Institute Project Boutique Ado-->
+                    <form class="form update-form" method="POST" action="">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button class="decrement-qty btn btn-sm btn-dark rounded-0"
+                                        data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                        <span>
+                                            <i class="fas fa-minus fa-sm"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                                <input class="form-control form-control-sm qty_input" type="number" name="quantity"
+                                    value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}"
+                                    id="id_qty_{{ item.item_id }}">
+                                <div class="input-group-append">
+                                    <button class="increment-qty btn btn-sm btn-dark rounded-0"
+                                        data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                        <span>
+                                            <i class="fas fa-plus fa-sm"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                                {% if item.product.has_sizes %}
+                                <input type="hidden" name="product_size" value="{{ item.size }}">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </form>
+                    <a class="update-link text-dark"><small>Update</small></a>
+                    <a class="remove-item text-dark float-right" id="remove_{{ item.item_id }}"
+                        data-size="{{ item.size }}"><small>Remove</small></a>
+                </div>
+                <div class="col-4 col-lg-2">&euro; {{ item.product.price }}</div>
 
             </div>
+            <hr class="mb-3"/>
             {% endfor %}
         </div>
-        <div class="col-12 col-md-6">
-            <h4>Costs details</h4>
+        <div class="col-12 col-md-6 mt-5">
+            <div class="row summary">
+                <div class="col">
+                    <h4 class="uppercase ">Summary</h4>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col">
                     Bag Total: &euro; {{ total|floatformat:2 }}
@@ -56,7 +106,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col text-uppercase">
                     Grand Total: &euro; {{ grand_total|floatformat:2 }}
                 </div>
 
@@ -91,11 +141,40 @@
 </div>
 
 {% else %}
-<h3>It looks like you haven't shopped anything yet<br>
-    Go back and buy something</h3>
-<a class="btn btn-dark" href="{% url 'home' %}" role="button">Home Page</a>
-
+<div class="container empty-bag text-center mt-5">
+    <h3>It looks like you haven't shopped anything yet<br>
+        Go back and buy something</h3>
+    <a class="btn btn-dark" href="{% url 'home' %}" role="button">Home Page</a>
+</div>
 {% endif %}
 
 
+{% endblock %}
+
+<!--Js From Code Institute Project Boutique Ado-->
+{% block postloadjs %}
+{{ block.super }}
+{% include 'products/includes/quantity_input.html' %}
+
+<script type="text/javascript">
+    // Update quantity on click
+    $('.update-link').click(function (e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.remove-item').click(function (e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var size = $(this).data('size');
+        var url = `/bag/remove/${itemId}`;
+        var data = { 'csrfmiddlewaretoken': csrfToken, 'size': size };
+
+        $.post(url, data)
+            .done(function () {
+                location.reload();
+            });
+    })
+</script>
 {% endblock %}

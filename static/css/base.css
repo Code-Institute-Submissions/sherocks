@@ -157,10 +157,6 @@ a{
     padding-top: 3rem;
 }
 
-.alert-register-banner{
-    padding-top: 8rem;
-}
-
 .product-detail-container{
     padding-bottom: 6rem;
 }
@@ -194,6 +190,10 @@ a{
 
 /* -------------------------------- Shopping Bag */
 
+.empty-bag{
+    height: 20rem;
+}
+
 /* Shadow effect adapted from https://css-tricks.com/simulating-drop-shadows-with-the-css-paint-api/ */
 .shopping-bag-container {
   box-sizing: border-box;
@@ -211,9 +211,18 @@ a{
   top: 1.5rem;
 }
 
-.total-items-in-bag{
+.total-items-in-bag {
     border-bottom: 2px solid black;
     margin: 0 1.5rem;
+}
+
+.summary{
+    border-bottom: 2px solid black;
+}
+
+.update-link,
+.remove-item {
+    cursor: pointer;
 }
 
 /* -------------------------------- Footer */
@@ -222,7 +231,7 @@ footer{
     border-top: 1px solid black;
 }
 /* Code adapted from https://tonys.se/artiklar/ovrigt/css-hur-du-gor-snygga-hr-taggar/ */
-hr {
+.hr-footer {
     width: 90%;
     margin: auto;
     border: 0;
