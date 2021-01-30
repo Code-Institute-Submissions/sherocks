@@ -131,6 +131,45 @@ a{
     font-weight: bold;
 }
 
+/* -------------------------------- Toasts */
+
+.toast-message{
+    overflow: visible;
+    box-shadow:
+    0 0 0.1vw  0.4vw #fff7f7,   
+    0 0 0.4vw  0.6vw rgba(255,255,255,.85), 
+    0 0   4vw  0.4vw #28a745,
+    inset 0 0 1.5vw  0.4vw #28a745,
+    inset 0 0 0.4vw  0.2vw rgba(255,255,255,.85),
+    inset 0 0 0.5vw  0.2vw #fff7f7;
+}
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+    width: 30rem;
+}
+
+.toast img{
+    width: 5rem;
+}
+
+.toast-body{
+    height: 30rem;
+}
+
+.close-icon{
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.bottom-toast{
+    position: absolute;
+    bottom: 1rem;
+}
+
 /* -------------------------------- Index */
 #first-block{
     background-image: url("/media/cropped-smaller-kate.jpg");
@@ -263,6 +302,14 @@ a{
 .update-link,
 .remove-item {
     cursor: pointer;
+}
+
+.qty_input{
+    height: 2.6rem;
+}
+
+.image-bag{
+    height: 10rem;
 }
 
 /* -------------------------------- Footer */
