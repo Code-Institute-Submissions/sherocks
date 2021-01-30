@@ -90,15 +90,14 @@
                 {% for i in products %}
 
                 <div class="card mx-auto mb-5" style="width: 30rem;">
-                    <img class="card-img-top" src="{{ i.image_url }}" alt="Card image cap">
                     <div class="card-body">
                         <a href="{% url 'product_detail' i.id %}">
+                        <img class="card-img-top" src="{{ i.image_url }}" alt="Card image cap">
+                        
                             <h5 class="card-title">{{ i.name|upper }}</h5>
                         </a>
                         <p class="card-text">{{ i.brand }}</p>
-                        <p class="card-text">{{ i.price }}</p>
-                    </div>
-                    <div class="card-body">
+                        <p class="card-text">&euro; {{ i.price }}</p>
                         <a href="#" class="card-link"><i class="fas fa-shopping-bag"></i></a>
                     </div>
                 </div>
