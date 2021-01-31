@@ -19,8 +19,9 @@
             <h3 class="text-center">Just one step closer to be a rock goddess!</h3>
         </div>
     </div>
-
+    <!--List and summary-->
     <div class="row mt-5">
+        <!--List of items in bag-->
         <div class="col-12 col-md-6">
             <div class="row mt-5 mb-3">
                 <div class="col total-items-in-bag uppercase">
@@ -28,29 +29,64 @@
                 </div>
             </div>
             <div class="row">
+                <!--Image item title-->
                 <div class="col-3 col-sm-4 col-lg-3">
                     <h4 class="uppercase">image</h4>
                 </div>
+                <!--Name title-->
                 <div class="d-none d-lg-block col-lg-4">
                     <h4 class="uppercase">name</h4>
                 </div>
+                <!--Quantity title-->
                 <div class="col-5 col-sm-4 col-lg-3">
                     <h4 class="uppercase">quantity</h4>
                 </div>
+                <!--Price title-->
                 <div class="col-4 col-lg-2">
                     <h4 class="uppercase">price</h4>
                 </div>
             </div>
+
             {% for item in bag_items %}
 
             <div class="row mb-3">
+
+                <!--Product image-->
                 <div class="col-3 col-sm-4 col-lg-3">
                     <img src="/media/{{ item.product.image }}" alt="{{ item.product.name }}" class="image-bag">
                 </div>
-                <div class="d-none d-lg-block col-lg-4">{{ item.product.name }}</div>
+
+                <!--Product name-->
+                <div class="d-none d-lg-block col-lg-4">
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-shopping-bag">
+                                {{ item.product.name }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-shopping-bag">
+                                Brand: {{ item.product.brand }}
+                            </p>
+                        </div>
+                    </div>
+                    {% if item.product.has_sizes %}
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-shopping-bag">
+                                Size: {{ item.size|upper }}
+                            </p>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!--Product quantity-->
                 <div class="col-5 col-sm-4 col-lg-3">
                     <!--Form From Code Institute Project Boutique Ado-->
-                    <form class="form update-form" method="POST" action="{% url 'update_bag' item.item_id %}">
+                    <form class="form update-form" id="form-quantity" method="POST" action="{% url 'update_bag' item.item_id %}">
                         {% csrf_token %}
                         <div class="form-group">
                             <div class="input-group">
@@ -73,24 +109,24 @@
                                         </span>
                                     </button>
                                 </div>
-                                {% if item.product.has_sizes %}
-                                <input type="hidden" name="product_size" value="{{ item.size }}">
-                                {% endif %}
                             </div>
                         </div>
                     </form>
                     <div class="row">
-                        <div class="col"><a class="update-link text-success"><small>Update</small></a></div>
-                        <div class="col"><a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"
+                        <div class="col-6"><a class="update-link text-success"><small>Update</small></a></div>
+                        <div class="col-6"><a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"
                                 data-product_size="{{ item.size }}"><small>Remove</small></a></div>
                     </div>
                 </div>
+
+                <!--Product price-->
                 <div class="col-4 col-lg-2">&euro; {{ item.product.price|calc_subtotal:item.quantity }}</div>
 
             </div>
             <hr class="mb-3" />
             {% endfor %}
         </div>
+        <!--Summary-->
         <div class="col-12 col-md-6 mt-5">
             <div class="row summary">
                 <div class="col">
@@ -161,7 +197,7 @@
 <script type="text/javascript">
     // Update quantity on click
     $('.update-link').click(function (e) {
-        var form = $(this).prev('.update-form');
+        var form = $('#form-quantity');
         form.submit();
     })
 
