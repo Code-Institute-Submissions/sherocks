@@ -91,7 +91,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <button class="decrement-qty btn btn-sm btn-dark rounded-0"
+                                    <button class="decrement-qty btn btn-sm btn-dark rounded-0 update-link"
                                         data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
                                         <span>
                                             <i class="fas fa-minus fa-sm"></i>
@@ -102,7 +102,7 @@
                                     value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}"
                                     id="id_qty_{{ item.item_id }}">
                                 <div class="input-group-append">
-                                    <button class="increment-qty btn btn-sm btn-dark rounded-0"
+                                    <button class="increment-qty btn btn-sm btn-dark rounded-0 update-link"
                                         data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
                                         <span>
                                             <i class="fas fa-plus fa-sm"></i>
@@ -113,8 +113,7 @@
                         </div>
                     </form>
                     <div class="row">
-                        <div class="col-6"><a class="update-link text-success"><small>Update</small></a></div>
-                        <div class="col-6"><a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"
+                        <div class="col-12 text-center"><a class="remove-item text-danger" id="remove_{{ item.item_id }}"
                                 data-product_size="{{ item.size }}"><small>Remove</small></a></div>
                     </div>
                 </div>
