@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bag_tools %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block extra_title %}Checkout{% endblock %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+<h2 class="page-title text-center uppercase">Secure Checkout</h2>
+
+
+{% if bag_items %}
+<div class="container shopping-bag-container">
+    <div class="row">
+        <div class="col">
+            <h3 class="text-center">Just one step closer to be a rock goddess!</h3>
+        </div>
+    </div>
+
+    <!-- Div with contact form-->
+    <!-- Div with form only for smaller screens-->
+    <div class="text-center d-block d-md-none">
+        <h5 class="text-dark uppercase mx-3 my-3">Please fill out the form below <br>
+            to complete your order</h5>
+
+
+        <div class="row">
+            <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                {% csrf_token %}
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <fieldset class="rounded px-3 mb-5 fieldset-details">
+                                <legend class="fieldset-label small form-legend px-2 w-auto">Details</legend>
+                                {{ order_form.first_name | as_crispy_field }}
+                                {{ order_form.last_name | as_crispy_field }}
+                                {{ order_form.email | as_crispy_field }}
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <fieldset class="rounded px-3 mb-5">
+                                <legend class="fieldset-label small form-legend px-2 w-auto">Delivery</legend>
+                                {{ order_form.phone_number | as_crispy_field }}
+                                {{ order_form.country | as_crispy_field }}
+                                {{ order_form.postcode | as_crispy_field }}
+                                {{ order_form.town_or_city | as_crispy_field }}
+                                {{ order_form.street_address1 | as_crispy_field }}
+                                {{ order_form.street_address2 | as_crispy_field }}
+                                {{ order_form.county | as_crispy_field }}
+                                <div class="form-check form-check-inline float-right mr-0">
+                                    {% if user.is_authenticated %}
+                                    <label class="form-check-label form-text" for="id-save-info">Save this delivery
+                                        information to my
+                                        profile</label>
+                                    <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info"
+                                        name="save-info" checked>
+                                    {% else %}
+                                    <label class="form-check-label" for="id-save-info">
+                                        <a class="text-info" href="{% url '' %}">Create an account</a> or
+                                        <a class="text-info" href="{% url '' %}">login</a> to save this information
+                                    </label>
+                                    {% endif %}
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <fieldset class="px-3">
+                                <legend class="fieldset-label small form-text px-2 w-auto">Payment</legend>
+                                <!-- A Stripe card element will go here -->
+                                <div class="mb-3" id="card-element">
+                                    <p class="small text-danger my-0">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong>
+                                    </p>
+                                </div>
+
+                                <!-- Used to display form errors -->
+                                <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                            </fieldset>
+
+                            <div class="submit-button text-right mt-5 mb-2">
+                                <a href="{% url 'shopping' %}" class="btn btn-outline-black rounded-0">
+                                    <span class="icon">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="font-weight-bold">Adjust Bag</span>
+                                </a>
+                                <button class="submit-button btn btn-black rounded-0">
+                                    <span class="font-weight-bold">Complete Order</span>
+                                    <span class="icon">
+                                        <i class="fas fa-lock"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Div with background image and frosted overlay only for medium and large screens-->
+    <div class="div-parallax d-none d-md-flex justify-content-center align-items-center text-center w-100 vh-100"
+        id="background-form">
+        <div class="overlay-frosted text-center ">
+            <h5 class="text-light uppercase mx-3 my-3">Please fill out the form below <br>
+                to complete your order</h5>
+
+
+            <div class="row">
+                <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                    {% csrf_token %}
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <fieldset class="rounded px-3 mb-5">
+                                    <legend class="fieldset-label small form-legend px-2 w-auto">Details</legend>
+                                    {{ order_form.first_name | as_crispy_field }}
+                                    {{ order_form.last_name | as_crispy_field }}
+                                    {{ order_form.email | as_crispy_field }}
+                                </fieldset>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <fieldset class="rounded px-3 mb-5">
+                                    <legend class="fieldset-label small form-legend px-2 w-auto">Delivery</legend>
+                                    {{ order_form.phone_number | as_crispy_field }}
+                                    {{ order_form.country | as_crispy_field }}
+                                    {{ order_form.postcode | as_crispy_field }}
+                                    {{ order_form.town_or_city | as_crispy_field }}
+                                    {{ order_form.street_address1 | as_crispy_field }}
+                                    {{ order_form.street_address2 | as_crispy_field }}
+                                    {{ order_form.county | as_crispy_field }}
+                                    <div class="form-check form-check-inline float-right mr-0">
+                                        {% if user.is_authenticated %}
+                                        <label class="form-check-label form-text" for="id-save-info">Save this delivery
+                                            information to my
+                                            profile</label>
+                                        <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info"
+                                            name="save-info" checked>
+                                        {% else %}
+                                        <label class="form-check-label" for="id-save-info">
+                                            <a class="text-info" href="{% url '' %}">Create an account</a> or
+                                            <a class="text-info" href="{% url '' %}">login</a> to save this information
+                                        </label>
+                                        {% endif %}
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <fieldset class="px-3">
+                                    <legend class="fieldset-label small form-text px-2 w-auto">Payment</legend>
+                                    <!-- A Stripe card element will go here -->
+                                    <div class="mb-3" id="card-element">
+                                        <p class="small text-danger my-0">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                            Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong>
+                                        </p>
+                                    </div>
+
+                                    <!-- Used to display form errors -->
+                                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                                </fieldset>
+
+                                <div class="submit-button text-right mt-5 mb-2">
+                                    <a href="{% url 'shopping' %}" class="btn btn-outline-black rounded-0">
+                                        <span class="icon">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </span>
+                                        <span class="font-weight-bold">Adjust Bag</span>
+                                    </a>
+                                    <button class="submit-button btn btn-black rounded-0">
+                                        <span class="font-weight-bold">Complete Order</span>
+                                        <span class="icon">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</div>
+
+{% else %}
+<div class="container empty-bag text-center mt-5">
+    <h3>It looks like you haven't shopped anything yet<br>
+        Go back and buy something</h3>
+    <a class="btn btn-dark" href="{% url 'products' %}" role="button">Home Page</a>
+</div>
+{% endif %}
+
+
+{% endblock %}
+
+<!--Js Adapted From Code Institute Project Boutique Ado-->
+{% block postload_js %}
+{{ block.super }}
+{% endblock %}

@@ -8,7 +8,7 @@
 
 {% block content %}
 
-
+<!--Show category name, if no category then display the title "Collection-->
 <h2 class="page-title text-center uppercase">
     {% if not current_categories == None %}
     {{ category_name }}
@@ -17,9 +17,10 @@
     {% endif %}
 </h2>
 
+<!--If the user searched for a term, this alert will confirm the term searched-->
 {% if search_term %}
-<div class="alert alert-dark" role="alert">
-    You searched for: {{ search_term }}
+<div class="alert alert-search" role="alert">
+    <p class="alert-text">You searched for: "{{ search_term }}"</p>
 </div>
 {% endif %}
 
@@ -98,7 +99,6 @@
                         </a>
                         <p class="card-text">{{ i.brand }}</p>
                         <p class="card-text">&euro; {{ i.price }}</p>
-                        <a href="#" class="card-link"><i class="fas fa-shopping-bag"></i></a>
                     </div>
                 </div>
                 {% empty %}

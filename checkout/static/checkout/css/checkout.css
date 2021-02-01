@@ -1,0 +1,11 @@
+.fieldset-details{
+    padding-top: 8rem;
+}
+
+#payment-form{
+    color: whitesmoke;
+}
+
+.form-control, #card-element{
+    border-color: 1px solid whitesmoke;
+}

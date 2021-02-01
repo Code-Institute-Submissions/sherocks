@@ -131,8 +131,8 @@
 
 
         {% if bag_items %}
-        <div class="alert alert-success text-center" role="alert">
-            Nice! You have {{ product_count }} item(s) in your <span><a href="{% url 'shopping' %}">bag</a></span>, for
+        <div class="alert alert-bag text-center" role="alert">
+            Nice! You have {{ product_count }} item(s) in your <span class="link-alert"><a href="{% url 'shopping' %}">bag</a></span>, for
             a
             total of &euro; {{ grand_total|floatformat:2 }}
         </div>
