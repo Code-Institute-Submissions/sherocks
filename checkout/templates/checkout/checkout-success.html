@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block extra_title %}Thank you!{% endblock %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+<h2 class="page-title text-center uppercase">Thank you for your purchase!</h2>
+
+
+<div class="container shopping-bag-container">
+    <div class="row">
+        <div class="col">
+            <h3 class="text-center">Ready to be a rock goddess!</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <p>While you are waiting to receive your order, <br>
+            take a cup of coffee and review your purchase! <br>
+            Log in to your email ({{ order.email }}) </p>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+{% endblock %}
+
+<!--Stripe functionality-->
+{% block postload_js %}
+{{ block.super }}
+
+{% endblock %}

@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
 
 from .forms import OrderForm
+from .models import Order, OrderLineItem
 from products.models import Product
 from shopping.context import bag_contents
 
@@ -35,6 +36,7 @@ def checkout(request):
             for item_id, item_data in bag.items():
                 try:
                     product = Product.objects.get(id=item_id)
+                    print(product)
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
                             order=order,
@@ -60,7 +62,6 @@ def checkout(request):
                     )
                     order.delete()
                     return redirect(reverse('shopping'))
-
             request.session[
                 'save_info'] = 'save-info' in request.POST
             return redirect(reverse(
@@ -98,4 +99,21 @@ def checkout(request):
         'client_secret': intent.client_secret,
     }
 
+    return render(request, template, context)
+
+
+def checkout_success(request, order_number):
+
+    save_info = request.session.get('save_info')
+    order = get_object_or_404(Order, order_number=order_number)
+    messages.success(request, f'Congratulation {order.first_name}! \
+        Your purchase is complete. \
+        Check {order.email}')
+
+    if 'bag' in request.session:
+        del request.session['bag']
+    template = "checkout/checkout-success.html"
+    context = {
+        'order': order,
+    }
     return render(request, template, context)
