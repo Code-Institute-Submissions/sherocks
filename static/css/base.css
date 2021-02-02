@@ -142,8 +142,8 @@ footer a i:hover{
 }
 
 .card{
-    background-color: rgba(0,0,0,.03);
     box-shadow: 0px 2px 8px 2px rgba(0,0,0,.20);
+    background-color: rgba(0,0,0,.03);
 }
 
 .navbar-toggler{
@@ -154,14 +154,14 @@ footer a i:hover{
     color: whitesmoke;
 }
 
+.close-icon{
+    color: #6c757d;
+}
+
 /* -------------------------------- Logo */
 .logo{
     width: 5rem;
     height: 5rem;
-}
-
-.close-icon{
-    color: #6c757d;
 }
 
 /* -------------------------------- Navbar */

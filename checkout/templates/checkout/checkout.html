@@ -25,28 +25,28 @@
 
     <!-- Div with contact form-->
     <!-- Div with form only for smaller screens-->
-    <div class="text-center d-block d-md-none">
-        <h5 class="text-dark uppercase mx-3 my-3">Please fill out the form below <br>
+    <div class="text-center">
+        <h5 class="text-dark uppercase mx-3 my-5">Please fill out the form below <br>
             to complete your order</h5>
 
 
-        <div class="row">
+        <div class="row px-0">
+            <div class="col-12 text-center px-0 column-form">
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
-                <div class="col-12">
                     <div class="row">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12">
                             <fieldset class="rounded px-3 mb-5 fieldset-details">
-                                <legend class="fieldset-label small form-legend px-2 w-auto">Details</legend>
+                                <legend class="fieldset-label text-dark small form-legend px-2 w-auto uppercase">Details</legend>
                                 {{ order_form.first_name | as_crispy_field }}
                                 {{ order_form.last_name | as_crispy_field }}
                                 {{ order_form.email | as_crispy_field }}
                             </fieldset>
                         </div>
 
-                        <div class="col-12 col-md-6">
+                        <div class="col-12">
                             <fieldset class="rounded px-3 mb-5">
-                                <legend class="fieldset-label small form-legend px-2 w-auto">Delivery</legend>
+                                <legend class="fieldset-label text-dark small form-legend px-2 w-auto uppercase">Delivery</legend>
                                 {{ order_form.phone_number | as_crispy_field }}
                                 {{ order_form.country | as_crispy_field }}
                                 {{ order_form.postcode | as_crispy_field }}
@@ -56,7 +56,7 @@
                                 {{ order_form.county | as_crispy_field }}
                                 <div class="form-check form-check-inline float-right mr-0">
                                     {% if user.is_authenticated %}
-                                    <label class="form-check-label form-text" for="id-save-info">Save this delivery
+                                    <label class="form-check-label" for="id-save-info">Save this delivery
                                         information to my
                                         profile</label>
                                     <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info"
@@ -74,43 +74,45 @@
                     <div class="row">
                         <div class="col-12">
                             <fieldset class="px-3">
-                                <legend class="fieldset-label small form-text px-2 w-auto">Payment</legend>
+                                <legend class="fieldset-label small text-dark px-2 w-auto uppercase">Payment</legend>
                                 <!-- A Stripe card element will go here -->
-                                <div class="mb-3" id="card-element">
-                                    <p class="small text-danger my-0">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong>
-                                    </p>
-                                </div>
+                                <div class="mb-3" id="card-element"></div>
 
                                 <!-- Used to display form errors -->
                                 <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                             </fieldset>
 
                             <div class="submit-button text-right mt-5 mb-2">
-                                <a href="{% url 'shopping' %}" class="btn btn-outline-black rounded-0">
+                                <a href="{% url 'shopping' %}" class="btn btn-outline-dark rounded-0">
                                     <span class="icon">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="font-weight-bold">Adjust Bag</span>
                                 </a>
-                                <button class="submit-button btn btn-black rounded-0">
+                                <button id="submit-button" class="btn btn-dark rounded-0">
                                     <span class="font-weight-bold">Complete Order</span>
                                     <span class="icon">
                                         <i class="fas fa-lock"></i>
                                     </span>
                                 </button>
+                                <p class="small text-danger my-0">
+                                    <span class="icon">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                    </span>
+                                    <span>Your card will be charged
+                                        <strong>${{ grand_total|floatformat:2 }}</strong></span>
+                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
             </form>
+        </div>
         </div>
     </div>
 
 
 
-    <!-- Div with background image and frosted overlay only for medium and large screens-->
+    <!-- Div with background image and frosted overlay only for medium and large screens 
     <div class="div-parallax d-none d-md-flex justify-content-center align-items-center text-center w-100 vh-100"
         id="background-form">
         <div class="overlay-frosted text-center ">
@@ -163,19 +165,14 @@
                             <div class="col-12">
                                 <fieldset class="px-3">
                                     <legend class="fieldset-label small form-text px-2 w-auto">Payment</legend>
-                                    <!-- A Stripe card element will go here -->
-                                    <div class="mb-3" id="card-element">
-                                        <p class="small text-danger my-0">
-                                            <i class="fas fa-exclamation-circle"></i>
-                                            Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong>
-                                        </p>
-                                    </div>
+                                    
+                                    <div class="mb-3" id="card-element"></div>
 
-                                    <!-- Used to display form errors -->
+                                    
                                     <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                                    
                                 </fieldset>
-
-                                <div class="submit-button text-right mt-5 mb-2">
+<div class="submit-button text-right mt-5 mb-2">
                                     <a href="{% url 'shopping' %}" class="btn btn-outline-black rounded-0">
                                         <span class="icon">
                                             <i class="fas fa-chevron-left"></i>
@@ -197,7 +194,7 @@
 
         </div>
     </div>
-
+-->
 
 
 
@@ -214,7 +211,10 @@
 
 {% endblock %}
 
-<!--Js Adapted From Code Institute Project Boutique Ado-->
+<!---->
 {% block postload_js %}
 {{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
