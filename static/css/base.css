@@ -369,8 +369,9 @@ a{
 }
 
 #third-block{
-    background-image: url("/media/morgan.jpg");
+    background-image: url("/media/cropped-morgan.jpg");
     background-size: cover;
+    background-attachment: fixed;
     position: relative;
 }
 
@@ -550,6 +551,13 @@ footer{
 @media (min-width: 576px){
     #first-block{
         background-image: url("/media/cropped-kate.jpg");
+    }
+
+    #third-block{
+    background-image: url("/media/morgan.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
     }
 
     h1{

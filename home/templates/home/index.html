@@ -67,3 +67,16 @@
 </div>
 
 {% endblock %}
+
+{% block postload_js %}
+{{ block.super }}
+<script>
+const parallax = document.getElementById("first-block");
+
+window.addEventListener("scroll", function(){
+    let offset = window.pageYOffset;
+    parallax.style.backgroundPositionY = offset * 0.7 + "px";
+})
+
+</script>
+{% endblock %}
