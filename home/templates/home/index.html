@@ -5,18 +5,50 @@
 {% block content %}
 
 <div class="container-fluid p-0">
+    <!--First block-->
     <div class="div-parallax d-flex justify-content-center align-items-center w-100 vh-100" id="first-block">
         <div class="overlay text-center">
-            <h1 class="text-light">Shine bright like a rockstar</h1>
-            <a class="btn btn-dark" href="{% url 'products' %}" role="button">Shop the Collection</a>
+            <div class="content-overlay">
+                <div class="row">
+                    <div class="col">
+                        <h1 class="text-light">Be a rock goddess!</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <a class="btn btn-pink" href="{% url 'products' %}" role="button">Shop the Collection</a>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
+    <!--Second block-->
     <div class="div-parallax d-flex justify-content-center align-items-center w-100 vh-100" id="second-block">
-        <h2 class="text-light bg-dark">New Arrivals</h2>
+        <div class="row">
+            <div class="d-none d-md-block col-md-6 col-blockquote">
+                <blockquote class="text-blockquote">"I don't do fashion. <br>
+                    I am fashion."</blockquote>
+                <figcaption>—Coco Chanel</figcaption>
+            </div>
+
+            <div class="col-12 col-md-6 col-last-item">
+                <img src="{{ last_image }}" class="last-image" alt="{{ last_name }} by {{ last_brand }}">
+                <div class="last-item-details overlay-frosted">
+                    <h2 class="uppercase">Last added:</h2>
+                    <h3>{{ last_name }}</h3>
+                    <p>by {{ last_brand }}</p>
+                    <a class="btn btn-pink" href="{% url 'product_detail' last_id %}" role="button">View product</a>
+                </div>
+
+            </div>
+        </div>
     </div>
+    <!--Third block-->
     <div class="div-parallax d-flex justify-content-center align-items-center w-100 vh-100" id="third-block">
         <h2 class="text-light bg-dark">Register</h2>
     </div>
+    <!--Fourth block-->
     <div class="div-parallax d-flex justify-content-center align-items-center w-100 vh-100" id="fourth-block">
         <h2 class="text-light bg-dark">Carousel</h2>
     </div>

@@ -36,7 +36,7 @@ def checkout(request):
             for item_id, item_data in bag.items():
                 try:
                     product = Product.objects.get(id=item_id)
-                    print(product)
+
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
                             order=order,
@@ -53,6 +53,7 @@ def checkout(request):
                                 quantity=quantity,
                                 product_size=size,
                             )
+                            print(order_line_item.product_size)
                             order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (

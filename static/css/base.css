@@ -11,6 +11,8 @@
 html, body{
     height: 100%;
     width: 100vw;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -33,6 +35,11 @@ h1{
 
 h2, h3, h4, h5, h6, .nav-item, a.nav-link, input, .btn{
     font-family: "Raleway", sans-serif;
+}
+
+.text-blockquote{
+    font-size: 5rem;
+    font-weight: bold;
 }
 
 a, .btn, .text{
@@ -93,22 +100,52 @@ h2.page-title{
     font-size: bold;
 }
 
+.btn-pink{
+    font-family: "Raleway", sans-serif;
+}
+
+.charge-card-text{
+    position: absolute;
+    bottom: 4rem;
+    right: 2rem;
+}
+
 /* -------------------------------- Palette */
 
 a{
     color: black;
 }
 
+.text-blockquote, figcaption{
+    color: whitesmoke;
+}
+
+.col-blockquote{
+    background-color: black;
+}
+
 footer a{
     color: whitesmoke;
 }
 
-a i{
+a i, .pink-icon i{
     color: rgb(219,98,151);
+}
+
+.pink-icon i:hover{
+    color: whitesmoke;
+}
+
+.danger-icon i{
+    color: #dc3545;
 }
 
 a i:hover{
     color: rgba(52,21,69,1);
+}
+
+.link-bag:hover{
+    color: rgb(219,98,151);
 }
 
 .alert-register-banner, .alert-bag{
@@ -131,6 +168,21 @@ a i:hover{
 
 .button-accordion{
     color: rgb(219,98,151);
+}
+
+.btn-pink{
+    background-color: rgb(219,98,151);
+    padding: 8px 32px;
+    color: whitesmoke;
+}
+
+.btn-pink:hover{
+    box-shadow: 0px 2px 8px 2px rgba(253, 253, 253, 0.2);
+}
+
+.btn-pink:focus{
+    box-shadow: 0px 2px 8px 2px rgba(253, 253, 253, 0.2);
+    background-color: rgb(218, 54, 125);
 }
 
 footer a i:hover{
@@ -156,6 +208,10 @@ footer a i:hover{
 
 .close-icon{
     color: #6c757d;
+}
+
+.col-last-item{
+    background-color: whitesmoke;
 }
 
 /* -------------------------------- Logo */
@@ -278,8 +334,38 @@ a{
         transform: translate(-50%, -50%);
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
-    height: 20%;
+    height: 40%;
     width: 80%;
+}
+
+.content-overlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+}
+
+#second-block{
+    background-color: whitesmoke;
+}
+
+.col-last-item{
+    height: 40rem;
+}
+
+.last-item-details{
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
+}
+
+.last-image{
+    display: block;
+    object-fit: contain;
+    height: 100%;
 }
 
 #third-block{
@@ -467,5 +553,9 @@ footer{
 
     .image-column{
     height: 40rem;
+    }
+
+    .overlay{
+        height: 25%;
     }
 }

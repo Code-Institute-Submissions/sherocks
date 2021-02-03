@@ -17,16 +17,89 @@
 <div class="container shopping-bag-container">
     <div class="row">
         <div class="col">
-            <h3 class="text-center">Ready to be a rock goddess!</h3>
+            <h3 class="text-center mb-3">Ready to be a rock goddess!</h3>
         </div>
     </div>
 
     <div class="row">
         <div class="col-12">
-            <p>While you are waiting to receive your order, <br>
-            take a cup of coffee and review your purchase! <br>
-            Log in to your email ({{ order.email }}) </p>
+            <p class="text-center">While you are waiting to receive your order, <br>
+                take a cup of coffee and review your purchase! <br>
+                We sent a confirmation email at {{ order.email }}</p>
         </div>
+    </div>
+    <!--Order summary after payment-->
+    
+    <div class="row">
+        <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+        <!--Order Info-->
+    <div class="row">
+        <div class="col-12">
+            <h3 class="uppercase title-section-summary">Your order info</h3>
+            <h4 class="title-detail">Order Number: </h4>
+            <p class="text-summary">{{ order.order_number }}</p>
+            <h4 class="title-detail">
+                Order Date: </h4>
+            <p class="text-summary">{{ order.date }}</p>
+
+        </div>
+    </div>
+    <hr>
+    <!--Order Details-->
+    <div class="row">
+        <div class="col-12">
+            <h3 class="uppercase title-section-summary">You just bought:</h3>
+            {% for item in order.lineitems.all %}
+            <div class="row item-detail-row">
+                <div class="col-12 item-detail-column">
+                    <p class="text-summary"><strong>{{ item.product.name }}</strong></p>
+                    
+                    <p class="text-summary">by {{ item.product.brand }}</p>
+                    
+                    {% if item.product.has_sizes %}
+                    <p class="text-summary">Size: {{ item.product_size|upper }}</p>
+                    {% endif %}
+                    
+                    <p class="text-summary">Quantity: {{ item.quantity }}</p>
+                    <p class="text-summary">Unit price: &euro; {{ item.product.price }}</p>
+                </div>
+            </div>
+
+            <hr>
+            {% endfor %}
+
+        </div>
+    </div>
+    <!--Delivery Info-->
+    <div class="row">
+        <div class="col-12">
+            <h3 class="uppercase title-section-summary">Your shipping info:</h3>
+            <p class="text-summary">To: <strong>{{ order.first_name }}, {{ order.last_name }}</strong></p>
+            <p class="text-summary">Email: {{ order.email }}</p>
+            <p class="text-summary">Phone number: {{ order.phone_number }}</p>
+            <p class="text-summary">Address:{{ order.address1 }}</p>
+             {% if order.street_address2 %}
+            <p class="text-summary">Address 2:{{ order.address2 }}</p>
+            {% endif %}
+            <p class="text-summary">Post-code: {{ order.postcode }}</p>
+            <p class="text-summary">Town/City: {{ order.town_or_city }}</p>
+             {% if order.county %}
+            <p class="text-summary">County: {{ order.county }}</p>
+             {% endif %}
+            <p class="text-summary">Country: {{ order.country }}</p>
+        </div>
+    </div>
+    <!--Billing Details-->
+    <div class="row">
+        <div class="col-12">
+            <h3 class="uppercase title-section-summary">Billiing details:</h3>
+            <p class="text-summary">Delivery: &euro; {{ order.delivery_cost }}</p>
+            
+            <p class="text-summary">Total: <strong>&euro; {{ order.grand_total }}</strong></p>
+            
+        </div>
+    </div>
+    </div>
     </div>
 
 

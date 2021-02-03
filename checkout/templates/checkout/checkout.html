@@ -17,6 +17,13 @@
 
 {% if bag_items %}
 <div class="container shopping-bag-container">
+    <div id="loading-overlay">
+        <h1 class="loading-spinner">
+            <span class="pink-icon spinner-icon">
+                <i class="fas fa-3x fa-spinner fa-pulse"></i>
+            </span>
+        </h1>
+    </div>
     <div class="row">
         <div class="col">
             <h3 class="text-center">Just one step closer to be a rock goddess!</h3>
@@ -31,13 +38,13 @@
 
 
         <div class="row px-0">
-            <div class="col-12 text-center px-0 column-form">
+            <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center px-0 column-form">
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                     <div class="row">
                         <div class="col-12">
                             <fieldset class="rounded px-3 mb-5 fieldset-details">
-                                <legend class="fieldset-label text-dark small form-legend px-2 w-auto uppercase">Details</legend>
+                                <legend class="fieldset-label title-section-summary small form-legend px-2 w-auto uppercase">Details</legend>
                                 {{ order_form.first_name | as_crispy_field }}
                                 {{ order_form.last_name | as_crispy_field }}
                                 {{ order_form.email | as_crispy_field }}
@@ -46,7 +53,7 @@
 
                         <div class="col-12">
                             <fieldset class="rounded px-3 mb-5">
-                                <legend class="fieldset-label text-dark small form-legend px-2 w-auto uppercase">Delivery</legend>
+                                <legend class="fieldset-label title-section-summary small form-legend px-2 w-auto uppercase">Delivery</legend>
                                 {{ order_form.phone_number | as_crispy_field }}
                                 {{ order_form.country | as_crispy_field }}
                                 {{ order_form.postcode | as_crispy_field }}
@@ -74,7 +81,7 @@
                     <div class="row">
                         <div class="col-12">
                             <fieldset class="px-3">
-                                <legend class="fieldset-label small text-dark px-2 w-auto uppercase">Payment</legend>
+                                <legend class="fieldset-label small title-section-summary px-2 w-auto uppercase">Payment</legend>
                                 <!-- A Stripe card element will go here -->
                                 <div class="mb-3" id="card-element"></div>
 
@@ -91,12 +98,12 @@
                                 </a>
                                 <button id="submit-button" class="btn btn-dark rounded-0">
                                     <span class="font-weight-bold">Complete Order</span>
-                                    <span class="icon">
+                                    <span class="icon pink-icon">
                                         <i class="fas fa-lock"></i>
                                     </span>
                                 </button>
-                                <p class="small text-danger my-0">
-                                    <span class="icon">
+                                <p class="small text-danger my-0 charge-card-text">
+                                    <span class="icon danger-icon">
                                         <i class="fas fa-exclamation-circle"></i>
                                     </span>
                                     <span>Your card will be charged
