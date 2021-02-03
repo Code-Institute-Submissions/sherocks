@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Product, Category
+import random
 
 
 # Create your views here.
@@ -69,7 +70,18 @@ def all_products(request):
 
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
+
+    products = list(Product.objects.all())   
+
+    products = random.sample(products, 3)
+    first_product = products[0]
+    second_product = products[1]
+    third_product = products[2]
+
     context = {
         "product": product,
+        "first_product": first_product,
+        "second_product": second_product,
+        "third_product": third_product,
     }
     return render(request, "products/product-detail.html", context)
