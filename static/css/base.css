@@ -508,6 +508,23 @@ a{
     border: 2px solid rgba( 255, 255, 255, 0.18 );
 }
 
+/* -------------------------------- Carousel with Random Images */
+
+.carousel-image{
+    height: 60rem;
+    object-fit: contain;
+}
+
+.carousel-caption{
+    color: black;
+    margin: auto;
+    background-color: rgba(250, 250, 250, 0.5)
+}
+
+.carousel-indicators li{
+    background-color: black;
+}
+
 /* -------------------------------- Footer */
 footer{
     flex-shrink: 0;
