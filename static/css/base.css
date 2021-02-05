@@ -214,6 +214,14 @@ footer a i:hover{
     background-color: whitesmoke;
 }
 
+.allauth-form-inner-content input::placeholder{
+    color: #aab7c4;
+}
+
+input[name="q"]::placeholder{
+    color: #aab7c4;
+}
+
 /* -------------------------------- Logo */
 .logo{
     width: 5rem;
@@ -258,6 +266,10 @@ a{
 
 .content-allauth{
     width: 80%;
+}
+
+.allauth-btn{
+    margin-bottom: 3rem;
 }
 
 /* -------------------------------- Toasts */
