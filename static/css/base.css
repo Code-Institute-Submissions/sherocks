@@ -306,7 +306,7 @@ a{
 }
 
 .toast-body{
-    height: 10rem;
+    height: auto;
 }
 
 .close-icon{
@@ -314,8 +314,7 @@ a{
 }
 
 .bottom-toast{
-    position: absolute;
-    bottom: 1rem;
+    padding-top: 0.5rem;
 }
 
 /* -------------------------------- Index */

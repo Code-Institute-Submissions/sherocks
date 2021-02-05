@@ -25,7 +25,7 @@
         <div class="col-12 col-md-6">
             <div class="row mt-5 mb-3">
                 <div class="col total-items-in-bag uppercase">
-                    <h4>{{ product_count }} items in my bag:</h4>
+                    <h4>{{ product_count }} item(s) in my bag:</h4>
                 </div>
             </div>
             <div class="row">
@@ -142,19 +142,25 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col">
-                    Bag Total: &euro; {{ total|floatformat:2 }}
+                    <p class="text-shopping-bag">
+                        Bag Total: &euro; {{ total|floatformat:2 }}
+                    </p>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    Delivery: &euro; {{ delivery|floatformat:2 }}
+                    <p class="text-shopping-bag">
+                        Delivery: &euro; {{ delivery|floatformat:2 }}
+                    </p>
                 </div>
             </div>
             <div class="row">
                 <div class="col text-uppercase">
-                    Grand Total: &euro; {{ grand_total|floatformat:2 }}
+                    <p class="text-shopping-bag">
+                        Grand Total: &euro; {{ grand_total|floatformat:2 }}
+                    </p>
                 </div>
 
                 {% if free_delivery_delta > 0 %}

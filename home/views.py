@@ -31,4 +31,3 @@ def index(request):
         "third_product": third_product,
     }
     return render(request, "home/index.html", context)
-
