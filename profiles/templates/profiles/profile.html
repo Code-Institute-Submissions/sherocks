@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/profile.css' %}">
+{% endblock %}
+
+{% block extra_title %}Profile{% endblock %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+<h2 class="page-title text-center uppercase">My profile</h2>
+
+
+<div class="container empty-bag text-center mt-5">
+    <h3>Back to Home Page</h3>
+    <a class="btn btn-dark" href="{% url 'home' %}" role="button">Home Page</a>
+</div>
+
+
+{% endblock %}
