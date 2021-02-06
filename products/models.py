@@ -1,5 +1,8 @@
 from django.db import models
 
+from profiles.models import UserProfile
+
+
 
 # Create your models here.
 class Category(models.Model):
@@ -31,3 +34,13 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Review(models.Model):
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="reviewer")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="reviewed_item")
+    review = models.CharField(max_length=160)
+    created = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.user} for {self.product}'

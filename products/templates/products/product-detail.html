@@ -114,11 +114,36 @@
                         </div>
                     </div>
                 </div>
+                
+                {% if reviews %}
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed uppercase button-accordion" data-toggle="collapse"
+                                data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Review
+                            </button>
+                        </h5>
+                    </div>
+                    {% for i in reviews %}
+                    <div id="collapseThree" class="collapse text text-accordion" aria-labelledby="headingThree"
+                        data-parent="#accordion">
+                        <div class="card-body poppins">
+                            <blockquote>"{{ i.review }}"</blockquote>
+                            <figcaption class="text-dark font-italic">{{ i.user }}</figcaption>
+                            <hr>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                {% endif %}
+                
 
             </div>
         </div>
     </div>
-<hr>
+    <hr>
     <div class="row mt-5">
         <div class="col-12 text-center">
             <h3 class="uppercase mt-5">Something you might like</h3>

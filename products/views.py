@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .models import Product, Category
+from .models import Product, Category, Review
 import random
 
 
@@ -71,17 +71,22 @@ def all_products(request):
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
-    products = list(Product.objects.all())   
+    products = list(Product.objects.all())
 
     products = random.sample(products, 3)
     first_product = products[0]
     second_product = products[1]
     third_product = products[2]
 
+    product_id = product.id
+
+    reviews = product.reviewed_item.all()
+  
     context = {
         "product": product,
         "first_product": first_product,
         "second_product": second_product,
         "third_product": third_product,
+        "reviews": reviews,
     }
     return render(request, "products/product-detail.html", context)
