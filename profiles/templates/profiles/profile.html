@@ -33,20 +33,110 @@
             </div>
         </div>
         <div class="col-12 col-lg-6">
-                <div class="row mt-5 mb-3">
-                    <div class="col total-items-in-bag uppercase">
-                        <h4>Order History</h4>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        {{ orders }}
-                    </div>
-                </div>
+            <div class="row mt-5 mb-3">
 
+                <div class="col total-items-in-bag uppercase">
+                    <h4>My Activity</h4>
+                </div>
+            </div>
+
+
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
+                                Order History
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            {% if orders %}
+                            <div class="table responsive">
+                            <!--Table content from Boutique Ado-COde Institute-->
+                            <table class="table table-sm table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th>Order Number</th>
+                                        <th>Date</th>
+                                        <th>Items</th>
+                                        <th>Order Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for order in orders %}
+                                    <tr>
+                                        <td>
+                                            <a href="{% url 'order_history' order.order_number %}"
+                                                title="{{ order.order_number }}">
+                                                {{ order.order_number|truncatechars:6 }}
+                                            </a>
+                                        </td>
+                                        <td>{{ order.date }}</td>
+                                        <td>
+                                            <ul class="list-unstyled">
+                                                {% for item in order.lineitems.all %}
+                                                <li class="small">
+                                                    {% if item.product.has_sizes %}
+                                                    Size {{ item.product.size|upper }}
+                                                    {% endif %}{{ item.product.name }} x{{ item.quantity }}
+                                                </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </td>
+                                        <td>${{ order.grand_total }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+                            {% else %}
+                            <p>We are waiting for your first order! <br>
+                                Take a tour of our shop here:</p>
+                            <div class="row">
+                                <div class="col">
+                                    <a class="btn btn-pink" href="{% url 'products' %}" role="button">Shop the
+                                        Collection</a>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                aria-expanded="false" aria-controls="collapseTwo">
+                                My Reviews
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            {% if reviews %}
+                            <ul>
+                            {% for i in reviews %}
+                            <li><strong>{{ i.product }}</strong>: "{{ i.review }}", created on the {{ i.created }}</li>
+                            {% endfor %}
+                            </ul>
+                            {% else %}
+                            <p>You didn't add any review yet. <br>
+                                Would you like to start now?</p>
+                            {% endif %}
+                            <button type="button" class="btn btn-dark mt-3">Add a review</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
+</div>
 
 
 

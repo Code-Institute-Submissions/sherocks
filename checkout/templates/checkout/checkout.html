@@ -45,8 +45,7 @@
                         <div class="col-12">
                             <fieldset class="rounded px-3 mb-5 fieldset-details">
                                 <legend class="fieldset-label title-section-summary small form-legend px-2 w-auto uppercase">Details</legend>
-                                {{ order_form.first_name | as_crispy_field }}
-                                {{ order_form.last_name | as_crispy_field }}
+                                {{ order_form.full_name | as_crispy_field }}
                                 {{ order_form.email | as_crispy_field }}
                             </fieldset>
                         </div>

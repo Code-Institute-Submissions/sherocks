@@ -62,16 +62,13 @@ form.addEventListener('submit', function(ev) {
         'save_info': saveInfo,
     };
     var url = '/checkout/cache_checkout_data/';
-    var first_name = $.trim(form.first_name.value);
-    var last_name = $.trim(form.last_name.value);
-    var name = first_name+" "+last_name;
 
     $.post(url, postData).done(function () {
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
                 billing_details: {
-                    name: name,
+                    name: $.trim(form.full_name.value),
                     phone: $.trim(form.phone_number.value),
                     email: $.trim(form.email.value),
                     address:{
@@ -84,7 +81,7 @@ form.addEventListener('submit', function(ev) {
                 }
             },
             shipping: {
-                name: name,
+                name: $.trim(form.full_name.value),
                 phone: $.trim(form.phone_number.value),
                 address: {
                     line1: $.trim(form.street_address1.value),
