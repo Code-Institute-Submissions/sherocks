@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %} v
+
+{% block extra_title %}{{ product.name }}{% endblock %}
+{% block page_header %}
+{% include "includes/register-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid product-detail-container">
+    <div class="row title-product-detail">
+        <div class="col text-center">
+            <h2 class="page-title text-center uppercase">Our team</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-deck">
+            <div class="row card-deck">
+
+
+                {% for employee in employees %}
+
+                <div class="card col-12" style="width: 30rem;">
+                    <div class="card-body">
+                        <img class="card-img-top image-team-card" src="/media/{{ employee.image }}"
+                            alt="Card image cap">
+
+                        <h5 class="card-title">{{ employee.full_name }}</h5>
+
+                        <p class="card-text">{{ employee.role|upper }}</p>
+                        <p class="card-text">
+                            Contact: 
+                            <a href="mailto:{{ employee.email }}" class="mr-3"><i class="fas fa-at"></i></a>
+                            <a href="tel:{{ employee.phone_number }}"><i class="fas fa-mobile-alt"></i></a>
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
