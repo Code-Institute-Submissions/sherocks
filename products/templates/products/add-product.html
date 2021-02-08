@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bag_tools %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block extra_title %}Add Product{% endblock %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+<h2 class="page-title text-center uppercase">Product Management</h2>
+<hr>
+<h3 class="text-center">Add a Product</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <form method="POST" action="{% url 'add_product' %}" class="form mb-3" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="text-right">
+                <a class=" btn btn-outline-dark rounded-0" href="{%  url 'products' %}">Cancel</a>
+                <button class="btn btn-pink" type="Submit">Add Product</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

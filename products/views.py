@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Product, Category
+from .forms import ProductForm
 import random
 
 
@@ -90,3 +91,12 @@ def product_detail(request, product_id):
         "reviews": reviews,
     }
     return render(request, "products/product-detail.html", context)
+
+
+def add_product(request):
+    form = ProductForm
+    template = "products/add-product.html"
+    context = {
+        "form": form,
+    }
+    return render(request, template, context)

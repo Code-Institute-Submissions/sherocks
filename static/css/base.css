@@ -257,6 +257,10 @@ a{
     font-weight: bold;
 }
 
+.btn-outline-dark{
+    padding: 8px 32px;
+}
+
 /* -------------------------------- Allauth */
 
 .allauth-block{
