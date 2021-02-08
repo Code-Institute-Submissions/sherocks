@@ -1,0 +1,27 @@
+Hi {{ order.full_name }}!
+
+Thank you for shopping at {{ company.name|upper }}! 
+
+We hope you will enjoy your new fashion items.
+
+As a reminder, this is a brief summary of your order:
+
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date }}
+
+Order Total: ${{ order.order_total }}
+Delivery: ${{ order.delivery_cost }}
+Grand Total: ${{ order.grand_total }}
+
+Your order will be shipped to {{ order.street_address1 }} in {{ order.town_or_city }}, {{ order.country }}.
+
+If you have any questions, feel free to contact our Customer Service Representative:
+{{ customer_service_representative.full_name }} will be happy to help you.
+Connect with her via mail ({{ customer_service_representative.email }}), or phone ({{ customer_service_representative.phone_number }})
+
+Thank you for your order!
+
+Sincerely,
+
+{{ company.name|upper }}
+{{ company.address }}
