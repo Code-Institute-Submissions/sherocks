@@ -62,6 +62,19 @@
                                                 </div>
                                             </div>
 
+                                            {% if request.user.is_superuser %}
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <small class="ml-3">
+                                                        <a href="{% url 'edit_product' product.id %}">Edit</a> |
+                                                        <a class="text-danger"
+                                                            href="{% url 'delete_product' product.id %}">Delete</a>
+                                                    </small>
+                                                </div>
+                                            </div>
+
+                                            {% endif %}
+
                                             <div class="col-12">
                                                 <a href="{% url 'products' %}"
                                                     class="btn btn-light border border-dark rounded-0 mt-5">
@@ -114,7 +127,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 {% if reviews %}
                 <div class="card">
                     <div class="card-header" id="headingThree">
@@ -136,9 +149,9 @@
                     </div>
                     {% endfor %}
                 </div>
-                
+
                 {% endif %}
-                
+
 
             </div>
         </div>
