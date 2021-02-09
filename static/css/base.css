@@ -241,6 +241,14 @@ nav{
     height: 5rem;
 }
 
+.search-box{
+    padding-top: 1.6rem;
+    padding-bottom: 1.6rem;
+}
+
+.search-element{
+    margin-left: 1rem;
+}
 
 /* -------------------------------- Common elements throughout the pages */
 .page-title{
