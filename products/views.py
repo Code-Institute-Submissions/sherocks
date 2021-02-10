@@ -4,7 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Product, Category
-from .forms import ProductForm
+from profiles.models import UserProfile
+from .forms import ProductForm, ReviewForm
 import random
 
 
@@ -158,3 +159,25 @@ def delete_product(request, product_id):
     messages.success(request, f'{product.name} correctly deleted')
 
     return redirect(reverse('products'))
+
+
+@login_required
+def add_review(request):
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            review_form = form.save(commit=False)
+            review_form.user = UserProfile.objects.get(user=request.user)
+            review_form.save()
+            messages.success(request, 'Thank you for adding a review')
+            return redirect(reverse('products'))
+        else:
+            messages.error(
+                request, 'Failed to add a review. Check your form.')
+    else:
+        form = ReviewForm()
+    template = "products/add-review.html"
+    context = {
+        "form": form,
+    }
+    return render(request, template, context)

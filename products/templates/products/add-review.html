@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bag_tools %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block extra_title %}Add Product{% endblock %}
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+<h2 class="page-title text-center uppercase">Add Review</h2>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <form method="POST" action="{% url 'add_review' %}" class="form mb-3" enctype="multipart/form-data">
+            {% csrf_token %}
+                    {% for field in form %}
+                            {{ field | as_crispy_field }}
+                    {% endfor %}
+            <div class="text-right">
+                <a class=" btn btn-outline-dark" href="{%  url 'products' %}">Cancel</a>
+                <button class="btn btn-pink" type="Submit">Add Review</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

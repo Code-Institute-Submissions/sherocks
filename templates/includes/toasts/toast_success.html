@@ -8,13 +8,10 @@
           <div class="col"><p>{{ message }}</p></div>
       </div>
 
-      {% if bag %}
+      {% if bag_items %}
       <div class="row">
           <div class="col text-center">
-              <a href="{% url 'shopping' %}" class="btn btn-dark rounded-0">
-                        <i class="fab fa-cc-stripe"></i>
-                        <span class="text-uppercase">View Bag</span>
-                    </a>
+              <a class="btn btn-pink" href="{% url 'shopping' %}" role="button">View bag</a>
           </div>
       </div>
       {% endif %}

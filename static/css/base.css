@@ -242,8 +242,8 @@ nav{
 }
 
 .search-box{
-    padding-top: 1.6rem;
-    padding-bottom: 1.6rem;
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
 }
 
 .search-element{
@@ -425,6 +425,10 @@ a{
 
 .sort-dropdown{
     width: 12rem;
+}
+
+.sort-div-dropdown{
+    margin-bottom: 3rem;
 }
 
 .sort-direction-icon{

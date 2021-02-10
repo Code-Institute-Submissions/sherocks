@@ -3,8 +3,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import UserProfile
-from checkout.models import Order
+
 from .forms import UserProfileForm
+from checkout.models import Order
 
 
 @login_required
@@ -19,7 +20,7 @@ def profile(request):
         else:
             messages.error(request, "Something is wrong with your form!")
     else:
-        form.UserProfileForm(instance=profile)
+        form = UserProfileForm(instance=profile)
 
     template = "profiles/profile.html"
     orders = profile.orders.all()
