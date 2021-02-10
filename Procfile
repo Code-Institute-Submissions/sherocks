@@ -1,1 +1,1 @@
-web: gunicorn sherocks.wsgi:application
+web: gunicorn she_rocks.wsgi:application
