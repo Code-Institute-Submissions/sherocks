@@ -61,7 +61,7 @@ h3{
 }
 
 h4{
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 
 h5{
@@ -85,7 +85,7 @@ h5.card-title{
 }
 
 .text-shopping-bag{
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .form-legend{
@@ -176,6 +176,15 @@ a i:hover{
     background-color: rgb(219,98,151);
     padding: 8px 32px;
     color: whitesmoke;
+}
+
+.btn-checkout{
+    background-color: rgb(219,98,151);
+    color: whitesmoke;
+}
+
+.btn-checkout i{
+    color: black;
 }
 
 .btn-pink:hover{
@@ -488,6 +497,10 @@ a{
     height: 3rem;
 }
 
+.w-20{
+    width: 20%;
+}
+
 /* -------------------------------- Shopping Bag */
 
 .empty-bag{
@@ -652,6 +665,7 @@ footer{
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     }
 
     h1{
@@ -668,6 +682,10 @@ footer{
 @media (min-width: 768px) {
     h1{
         font-size: 4rem;
+    }
+
+    h4{
+        font-size: 2rem;
     }
 
     .image-column{

@@ -92,7 +92,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <button class="decrement-qty btn btn-sm btn-dark rounded-0 update-link"
+                                    <button class="decrement-qty btn btn-sm btn-checkout rounded-0 update-link"
                                         data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
                                         <span>
                                             <i class="fas fa-minus fa-sm"></i>
@@ -103,7 +103,7 @@
                                     value="{{ item.quantity }}" min="1" max="99" data-item_id="{{ item.item_id }}"
                                     id="id_qty_{{ item.item_id }}">
                                 <div class="input-group-append">
-                                    <button class="increment-qty btn btn-sm btn-dark rounded-0 update-link"
+                                    <button class="increment-qty btn btn-sm btn-checkout rounded-0 update-link"
                                         data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
                                         <span>
                                             <i class="fas fa-plus fa-sm"></i>
@@ -145,21 +145,21 @@
             <div class="row mt-5">
                 <div class="col">
                     <p class="text-shopping-bag">
-                        Bag Total: &euro; {{ total|floatformat:2 }}
+                        <strong>Bag Total:</strong> &euro; {{ total|floatformat:2 }}
                     </p>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <p class="text-shopping-bag">
-                        Delivery: &euro; {{ delivery|floatformat:2 }}
+                        <strong>Delivery:</strong> &euro; {{ delivery|floatformat:2 }}
                     </p>
                 </div>
             </div>
             <div class="row">
                 <div class="col text-uppercase">
                     <p class="text-shopping-bag">
-                        Grand Total: &euro; {{ grand_total|floatformat:2 }}
+                        <strong>Grand Total:</strong> &euro; {{ grand_total|floatformat:2 }}
                     </p>
                 </div>
 
@@ -179,7 +179,7 @@
 
                         <span class="text-uppercase">Back to Shopping</span>
                     </a>
-                    <a href="{% url 'checkout' %}" class="btn btn-dark rounded-0 mt-5">
+                    <a href="{% url 'checkout' %}" class="btn btn-checkout rounded-0 mt-5">
 
                         <i class="fab fa-cc-stripe"></i>
 
