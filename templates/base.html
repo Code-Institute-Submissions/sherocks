@@ -13,7 +13,11 @@
 
     {% block extra_meta %}
     {% endblock %}
-
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
     <!-- Bootstrap CSS -->
     {% block corecss %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -103,22 +107,23 @@
                     </a>
                 </li>
                 <li class="list-inline-item dropleft">
-                    <a class="nav-link text-center" href="" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link text-center" href="" id="user-options" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user fa-2x"></i>
                     </a>
                     <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                            {% if request.user.is_authenticated %}
-                                {% if request.user.is_superuser %}
-                                    <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
-                                {% endif %}
-                                <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                                <a class="dropdown-item" href="{% url 'add_review' %}">Add a review</a>
-                            {% else %}
-                                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                            {% endif %}
-                        </div>
+                        {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
+                        <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                        {% endif %}
+                        <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                        <a class="dropdown-item" href="{% url 'add_review' %}">Add a review</a>
+                        {% else %}
+                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                        {% endif %}
+                    </div>
                 </li>
             </ul>
 
@@ -151,7 +156,8 @@
 
         {% if bag_items %}
         <div class="alert alert-bag text-center" role="alert">
-            Nice! You have {{ product_count }} item(s) in your <span class="link-alert"><a href="{% url 'shopping' %}" class="link-bag">bag</a></span>, for
+            Nice! You have {{ product_count }} item(s) in your <span class="link-alert"><a href="{% url 'shopping' %}"
+                    class="link-bag">bag</a></span>, for
             a
             total of &euro; {{ grand_total|floatformat:2 }}
         </div>
