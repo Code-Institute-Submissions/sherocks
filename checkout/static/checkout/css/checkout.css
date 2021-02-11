@@ -56,6 +56,14 @@ input[type=text]:hover, input[type=text]:active, input[type=text]:focus{
 .icon{
     vertical-align: middle;
 }
+
+.icon-back{
+    color: whitesmoke;
+}
+
+.icon-back:hover{
+    color: black;
+}
 /* ------------------------------------------------Order Success */
 .text-summary{
     font-size: 1rem;

@@ -178,6 +178,14 @@ li a:hover, .link-bag:hover, .card-body a:hover{
     color: whitesmoke;
 }
 
+.register-link{
+    color: rgb(219,98,151);
+}
+
+.register-link:hover{
+    color: rgb(218, 54, 125);
+}
+
 .alert-search{
     background-color: rgb(219,98,151);
     color: whitesmoke;
