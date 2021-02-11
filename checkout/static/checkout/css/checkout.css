@@ -53,6 +53,9 @@ input[type=text]:hover, input[type=text]:active, input[type=text]:focus{
     background-color: rgba(0,0,0,.03);
 }
 
+.icon{
+    vertical-align: middle;
+}
 /* ------------------------------------------------Order Success */
 .text-summary{
     font-size: 1rem;
@@ -98,5 +101,5 @@ input[type=text]:hover, input[type=text]:active, input[type=text]:focus{
 }
 
 .spinner-icon{
-    font-size: 8rem;
+    font-size: 6rem;
 }
