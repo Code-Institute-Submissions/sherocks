@@ -437,6 +437,10 @@ a{
     grid-gap: 1rem;
 }
 
+.card-all-products{
+    width: 23rem;
+}
+
 .sort-dropdown{
     width: 12rem;
 }
@@ -680,6 +684,10 @@ footer{
 
     .product-detail-container{
     padding-bottom: 0;
+    }
+
+    .card{
+        width: 30rem;
     }
 
 }
