@@ -149,8 +149,14 @@ a i:hover{
     color: rgba(52,21,69,1);
 }
 
-.link-bag:hover{
+a:hover{
+    text-decoration: none;
+}
+
+li a:hover, .link-bag:hover, .card-body a:hover{
     color: rgb(219,98,151);
+    text-decoration: none;
+    font-style: oblique;
 }
 
 .alert-register-banner, .alert-bag{
@@ -425,6 +431,7 @@ a{
     background-size: cover;
     background-attachment: fixed;
     position: relative;
+    background-position: center;
 }
 
 /* -------------------------------- Products */
