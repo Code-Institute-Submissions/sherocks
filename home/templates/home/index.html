@@ -73,23 +73,21 @@
 {% block postload_js %}
 {{ block.super }}
 <script>
-const parallaxid = document.getElementById("first-block");
-const parallaxclass = document.querySelectorAll(".parallax");
+const parallax = document.getElementById("first-block");
 let iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
 window.addEventListener("scroll", function(){
-    if (iOS){
-        let offset = window.pageYOffset;
-        parallaxclass.forEach(function(prllx, i) {
-            prllx.style.backgroundPositionY = (offset - prllx.offsetTop) * 0.7 + "px";
-        });
-    }
-    else{
     let offset = window.pageYOffset;
-    parallaxid.style.backgroundPositionY = offset * 0.7 + "px";
-    console.log(iOS);
-    }
+    parallax.style.backgroundPositionY = offset * 0.7 + "px";
 });
+
+window.onload=function(){
+    if (iOS){
+        let thirddiv = document.getElementById("third-block");
+        thirddiv.removeAttribute('id');
+        thirddiv.classList.add("third-block-iOS");
+    }
+}
 
 </script>
 {% endblock %}

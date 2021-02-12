@@ -517,6 +517,14 @@ a{
     background-image: url("/media/cropped-morgan.jpg");
     background-size: cover;
     position: relative;
+    background-attachment: fixed;
+}
+
+.third-block-iOS{
+    background-image: url("/media/cropped-morgan.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
 }
 
 /* -------------------------------- Products */
