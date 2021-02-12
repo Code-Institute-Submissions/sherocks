@@ -516,7 +516,6 @@ a{
 #third-block{
     background-image: url("/media/cropped-morgan.jpg");
     background-size: cover;
-    background-attachment: fixed;
     position: relative;
 }
 
