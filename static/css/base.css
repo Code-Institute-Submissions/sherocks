@@ -495,6 +495,19 @@ a{
     width: 80%;
 }
 
+.bigger-overlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 50%;
+    width: 80%;
+}
+
 .content-overlay{
     position: absolute;
     top: 50%;
