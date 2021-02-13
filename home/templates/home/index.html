@@ -75,19 +75,27 @@
 <script>
 const parallax = document.getElementById("first-block");
 let iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+let safari = navigator.userAgent.indexOf("Safari") > -1;
+
+window.onload=function(){
+    if (iOS){
+        if (safari){
+        let thirddiv = document.getElementById("third-block");
+        thirddiv.removeAttribute('id');
+        thirddiv.classList.add("bg-dark");
+        }
+        else{
+        let thirddiv = document.getElementById("third-block");
+        thirddiv.removeAttribute('id');
+        thirddiv.classList.add("third-block-iOS");
+        }
+    }
+};
 
 window.addEventListener("scroll", function(){
     let offset = window.pageYOffset;
     parallax.style.backgroundPositionY = offset * 0.7 + "px";
 });
-
-window.onload=function(){
-    if (iOS){
-        let thirddiv = document.getElementById("third-block");
-        thirddiv.removeAttribute('id');
-        thirddiv.classList.add("third-block-iOS");
-    }
-}
 
 </script>
 {% endblock %}
