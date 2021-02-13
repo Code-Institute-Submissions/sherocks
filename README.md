@@ -1,45 +1,243 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# She Rocks!
 
-Welcome marlene32100,
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
 
-## Gitpod Reminders
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+For the fourth Milestone Project, I decided to combine two of my passions, fashion and rock music, 
+in an e-commerce website. Having a background in high-end retail, I decided to keep the same customer target, 
+but specializing in rock chic style clothing.
 
-`python3 -m http.server`
+View the live project here. [She Rocks](https://sherocks.herokuapp.com/)
 
-A blue button should appear to click: *Make Public*,
 
-Another blue button should appear to click: *Open Browser*.
+### :page_with_curl: Navigation Menu
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+The navigation menu stick to the top of every page. 
 
-A blue button should appear to click: *Make Public*,
+In this way, a user can navigate easily even if scrolls down the page.
 
-Another blue button should appear to click: *Open Browser*.
+This is how it looks on larger devices:
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+![Navbar](static/readme-doc/layout/navbar.png)
 
-## Updates Since The Instructional Video
+On smaller screens the navbar collapses into a hamburger icon:
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+![Navbar](static/readme-doc/layout/navbarMobile.png)
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+![Navbar](static/readme-doc/layout/navbarMobileClick.png)
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+### :page_with_curl: Footer
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+### :page_with_curl: Home Page
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+### :page_with_curl: All Products
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
 
---------
+### :page_with_curl: Products by Category
 
-Happy coding!
+
+### :page_with_curl: Product Detail
+
+
+### :page_with_curl: Team
+
+
+### :page_with_curl: Login / Register
+
+
+### :page_with_curl: My Profile
+
+
+### :page_with_curl: Product Management
+
+---
+
+## User Experience (UX)
+
+
+* **:bookmark_tabs: Strategy Plane**
+
+
+* **:bookmark_tabs: Scope Plane**
+
+
+* **:bookmark_tabs: Structure Plane**
+
+
+* **:bookmark_tabs: Skeleton Plane**
+
+
+* **:bookmark_tabs: Surface Plane**
+
+
+### User stories
+
+#### :computer: 
+
+
+
+### Design
+
+### Colour Scheme
+
+At the beginning I wanted to stuck with a black/white palette, but then I thought that a splash of colour was suitable, 
+as the style of clothing has character and stands out. 
+
+I opted for a deep pink (China Pink) and a dark purple (Russian Violet). I got the inspiration from cyberpunk digital art.
+
+![Palette](static/readme-doc/palette.png)
+
+
+### Typography
+
+I choosed two fonts that are modern and highly legible: Montserrat and Raleway.
+
+![Montserrat](static/readme-doc/montserrat.png)
+![Raleway](static/readme-doc/raleway.png)
+
+
+At the beginning I searched for something more out of the ordinary for the titles, but I ended up choosing Raleway.
+
+I didn't want to make the page look too messy and the focus should stay on the pictures.
+
+
+### Imagery
+
+I got the products images from the brands webpages. I selected the products that I thought would be perfect in this
+
+shop.
+
+The team images has been taken from Unpslash, except for one image that is mine.
+
+The pictures in the home page come from two different websites.
+
+All the links to the images are here: [Images Links](static/readme-doc/Links.pdf)
+
+
+### Wireframes
+
+You can view my prototypes by clicking on the following links:
+
+* [Mobile Prototype](static/readme-doc/wireframes/mobileEcommerce.pdf)
+
+* [Tablet Prototype](static/readme-doc/wireframes/TabletEcommerce.pdf)
+
+* [Desktop Prototype](static/readme-doc/wireframes/DesktopEcommerce.pdf)
+
+Prototyping has been made with Balsamiq.
+
+
+
+### Features
+
+
+
+### Features to implement
+
+
+### Database
+
+For this project I have used SQLite on the local server and Postgres for deployment.
+
+---
+
+## Technologies Used
+
+### Languages Used
+* HTML5
+* CSS3
+* JavaScript
+* Python 3.8.6
+
+### Frameworks, Libraries & Programs Used
+
+* Bootstrap 4.5.0.
+* Google Fonts
+* Font Awesome 4.7.0.
+* Git
+* GitHub
+* GitPod
+* Jinja
+* Django
+* Heroku
+* SQLite
+* Postgres
+* [Django Secret Key Generator](https://miniwebtool.com/it/django-secret-key-generator/)
+* Stripe
+* AWS S3
+* Chrome DevTools
+* Balsamiq
+* Favicon.ico
+* Html Validator
+* CSS Validator
+* JSHint
+* Autoprefixer CSS 9.7.6
+* Am I responsive?
+* Techsini mockup generator
+
+
+---
+
+## Testing
+
+### :heavy_check_mark: Functionality Testing 
+
+
+### :heavy_check_mark: Usability Testing
+
+
+
+### :heavy_check_mark: Compatibility Testing
+
+
+### :heavy_check_mark: Performance Testing
+
+
+
+### Bugs
+
+
+---
+
+---
+
+## Deployment
+
+The website is deployed connecting Heroku with GitHub.
+
+
+#### Fork the code on GitHub
+If you need to work on this code on your own, follow these steps:
+
+* Log in to GitHub;
+* Find the repository you are looking for;
+* On the top-right of the page you will find a button with the name "Fork";
+* Click on it and it will automatically fork the code to your GitHub.
+
+
+#### Local Clone
+To make a local clone of the site, just follow these stepsg:
+
+* Log in to your GitHub;
+* Under your repository section, select the repo that you need;
+* You will find a green button with the name "Code". Click on it;
+* On the dropdown selection, you will find a link to clone the code with HHTPS;
+* Now open Git bash;
+* Open the directory where you want to work on the cloned code;
+* Type git clone followed by the link you have previously copied.
+
+
+---
+
+## Credits
+
+### :star: Code
+
+### :star: Media
+
+
+### :star: Acknowledgements
+
+

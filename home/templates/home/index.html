@@ -75,7 +75,7 @@
 {{ block.super }}
 <script>
     const parallax = document.getElementById("first-block");
-    let iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
     window.addEventListener("scroll", function () {
         let offset = window.pageYOffset;
@@ -85,8 +85,7 @@
     window.onload = function () {
         if (iOS) {
             let thirddiv = document.getElementById("third-block");
-            thirddiv.removeAttribute('id');
-            thirddiv.classList.add("third-block-iOS");
+            thirddiv.style.setProperty('background-attachment', 'initial');
         }
     };
 
