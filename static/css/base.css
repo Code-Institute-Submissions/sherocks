@@ -21,6 +21,7 @@ html, body{
     padding: 0;
 }
 
+
 html{
      width: 100vw;
 }
@@ -69,8 +70,12 @@ a, .text, strong{
     font-size: 1.6rem;
 }
 
-button span, a span{
+button span, a span, .btn-pink{
     font-size: 1.4rem;
+}
+
+label{
+    font-size: 1.2rem;
 }
 
 p, .card-text{
