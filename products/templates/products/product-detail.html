@@ -133,7 +133,7 @@
                     </div>
                     <div id="collapseTwo" class="collapse text text-accordion" aria-labelledby="headingTwo"
                         data-parent="#accordion">
-                        <div class="card-body poppins">
+                        <div class="card-body text">
                             {{ product.material }}
                         </div>
                     </div>
@@ -152,8 +152,8 @@
                     {% for i in reviews %}
                     <div id="collapseThree" class="collapse text text-accordion" aria-labelledby="headingThree"
                         data-parent="#accordion">
-                        <div class="card-body poppins">
-                            <blockquote>"{{ i.review }}"</blockquote>
+                        <div class="card-body">
+                            <blockquote class="text">"{{ i.review }}"</blockquote>
                             <figcaption class="text-dark font-italic">{{ i.user }}</figcaption>
                             <hr>
                         </div>

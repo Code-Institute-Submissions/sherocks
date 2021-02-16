@@ -61,12 +61,20 @@ h2, h3, h4, h5, h6, .nav-item, a.nav-link, input, .btn{
     font-weight: bold;
 }
 
-a, .btn, .text{
-    font-size: 1.3rem;
+a, .text, strong{
+    font-size: 1.4rem;
+}
+
+.btn{
+    font-size: 1.6rem;
+}
+
+button span, a span{
+    font-size: 1.4rem;
 }
 
 p, .card-text{
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 h2{
@@ -84,6 +92,7 @@ h4{
 h5{
     font-size: 1.8rem;
 }
+
 .nav-item, a.nav-link{
     text-transform: uppercase;
 }
@@ -353,6 +362,26 @@ a{
 
 .btn-outline-dark{
     padding: 8px 32px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1.6rem !important;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    -o-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
 }
 
 /* -------------------------------- Allauth */
