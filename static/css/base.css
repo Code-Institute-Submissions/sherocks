@@ -147,6 +147,10 @@ h2.page-title{
     font-size: 1.2rem;
 }
 
+.stripe-style-input option{
+    font-size: 1.4rem;
+}
+
 /* -------------------------------- Palette */
 
 a{
@@ -197,10 +201,12 @@ li a:hover, .link-bag:hover, .card-body a:hover{
 }
 
 .register-link{
+    -webkit-text-fill-color: rgb(219, 98, 151);
     color: rgb(219,98,151);
 }
 
 .register-link:hover{
+    -webkit-text-fill-color: rgb(219, 98, 151);
     color: rgb(218, 54, 125);
 }
 

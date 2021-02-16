@@ -625,7 +625,7 @@ Browsers:
 
 * Safari (on iPhone): issue with background attachment set to fixed. Check "bug" section for more details.
 
-* Opera: 
+* Opera: no issues.
 
 
 ### :heavy_check_mark: Performance Testing
@@ -635,6 +635,8 @@ Browsers:
 ### Bugs
 
 #### Solved Bugs:
+
+##### iOS
 
 I had a problem with the home page on iOS, since the third section has a background attachment property set to fixed.
 That gives a parallax effect, but is not supported on iOS.
@@ -646,10 +648,36 @@ The parallax effect on this section is lost, but at least the background image i
 I could have also used the same parallax effect that has the first section in the home page, which is working properly also on iOS,
 but the visual effect is slightly different and I didn't want to replicate the exact same result.
 
-#### On 280px screens:
+##### Firefox
+
+On Firefox the property "backdrop-filter: blur" that gives the glassmorphism effect is not supported. 
+
+This is acceptable over the carousel, but it makes very hard to read the words in the register/sign in form.
+
+![Bug on Firefox](static/readme-doc/testing/firefoxBlur.png)
+
+I decided to write some JavaScript to fix this bug (static/js/firefox-backgorund.js) which detects if the browser is Firefox;
+if so, it will apply a dark shade of purple instead of the white blurred background. 
+
+I used [Image Color Picker](https://imagecolorpicker.com/) to get the color value for the background by uploading the 
+background image that I used for the main container. After I got all the color values related to that image, I chose the darker one
+and I applied the value inside the code.
+
+![Bug on Firefox](static/readme-doc/testing/firefoxAfter.png)
+
+#### Known bugs 
+
+##### On 280px screens:
  
  The home page floats horizontally because the navbar is wider than the viewport.
  The pages are not centered.
+
+##### Error 500
+
+It happened a couple of times that an error 500 appeared random while navigating. The error disappeared by itself by refreshing
+after a few minutes.
+
+It was not possible to understand what caused the issue.
 
 ---
 

@@ -21,3 +21,8 @@
         
     </div>
 {% endblock %}
+
+{% block postload_js %}
+{{ block.super }}
+<script src="{% static 'js/firefox-background.js"></script>
+{% endblock %}
