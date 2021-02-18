@@ -98,7 +98,7 @@
                     <div class="card-body">
                         <a href="{% url 'product_detail' i.id %}">
 
-                            <img class="card-img-top" src="{{ i.image_url }}" alt="Card image cap">
+                            <img class="card-img-top" loading="lazy" src="{{ i.image_url }}" alt="{{ i.name }} by {{ i.brand }}">
 
                             <h5 class="card-title">{{ i.name|upper }}</h5>
                         </a>

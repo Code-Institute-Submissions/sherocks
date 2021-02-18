@@ -29,7 +29,8 @@ class Employee(models.Model):
     office = models.ForeignKey(
         'Office', on_delete=models.CASCADE, related_name="employee_in_office")
     role = models.CharField(max_length=30, null=False, blank=False)
-    image = models.ImageField(upload_to='team', null=True, blank=True)
+    image = models.ImageField(
+        upload_to='team', null=True, blank=True)
 
     def __str__(self):
         return f'{self.full_name}, {self.role} at {self.office}'

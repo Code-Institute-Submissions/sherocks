@@ -1,24 +1,54 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 .StripeElement,
 .stripe-style-input {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   height: 40px;
   padding: 10px 12px;
   border: 1px solid transparent;
   border-radius: 0px;
   background-color: white;
-  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-box-shadow: 0 1px 3px 0 #e6ebf1;
+          box-shadow: 0 1px 3px 0 #e6ebf1;
   -webkit-transition: box-shadow 150ms ease;
+  -webkit-transition: -webkit-box-shadow 150ms ease;
+  transition: -webkit-box-shadow 150ms ease;
+  -o-transition: box-shadow 150ms ease;
   transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease, -webkit-box-shadow 150ms ease;
 }
 
 .StripeElement--focus,
 .stripe-style-input:focus,
 .stripe-style-input:active {
-  box-shadow: 0 1px 3px 0 #cfd7df;
+  -webkit-box-shadow: 0 1px 3px 0 #cfd7df;
+          box-shadow: 0 1px 3px 0 #cfd7df;
 }
 
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
+}
+
+.stripe-style-input::-webkit-input-placeholder {
+    color: #aab7c4;
+}
+
+.stripe-style-input::-moz-placeholder {
+    color: #aab7c4;
+}
+
+.stripe-style-input:-ms-input-placeholder {
+    color: #aab7c4;
+}
+
+.stripe-style-input::-ms-input-placeholder {
+    color: #aab7c4;
 }
 
 .stripe-style-input::placeholder {
@@ -35,13 +65,14 @@ select:invalid, select option[value=""]{
 
 #payment-form, .form-control, #card-element{
     color: black;
-    border-color: 1px solid black;
+    border: 1px solid black;
 }
 
 input[type=text]{
     border: none;
     border-bottom: 1px solid black;
-    box-shadow: 0 8px 6px -6px #6c757d;
+    -webkit-box-shadow: 0 8px 6px -6px #6c757d;
+            box-shadow: 0 8px 6px -6px #6c757d;
 }
 
 input[type=text]:hover, input[type=text]:active, input[type=text]:focus{
@@ -49,7 +80,8 @@ input[type=text]:hover, input[type=text]:active, input[type=text]:focus{
 }
 
 .column-form{
-    box-shadow: 0px 2px 8px 2px rgba(0,0,0,.20);
+    -webkit-box-shadow: 0px 2px 8px 2px rgba(0,0,0,.20);
+            box-shadow: 0px 2px 8px 2px rgba(0,0,0,.20);
     background-color: rgba(0,0,0,.03);
 }
 
@@ -101,9 +133,15 @@ input[type=text]:hover, input[type=text]:active, input[type=text]:focus{
 }
 
 .loading-spinner{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     margin: 0;
     height: 100%;
 }

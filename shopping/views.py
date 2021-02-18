@@ -24,11 +24,14 @@ def add_to_bag(request, item_id):
             if size in bag[item_id]['items_by_size'].keys():
                 bag[item_id]['items_by_size'][size] += quantity
                 messages.success(
-                    request, f'Updated size {size.upper()} for {product.name} to {bag[item_id]["items_by_size"][size]} items')
+                    request, f'Updated size {size.upper()} \
+                        for {product.name} to \
+                            {bag[item_id]["items_by_size"][size]} items')
             else:
                 bag[item_id]['items_by_size'][size] = quantity
                 messages.success(
-                    request, f'You just added {product.name}, size {size.upper()}')
+                    request, f'You just added \
+                        {product.name}, size {size.upper()}')
         else:
             bag[item_id] = {'items_by_size': {size: quantity}}
             messages.success(
@@ -37,7 +40,8 @@ def add_to_bag(request, item_id):
         if item_id in list(bag.keys()):
             bag[item_id] += quantity
             messages.success(
-                request, f'Nice! You added more {product.name} to your shopping bag')
+                request, f'Nice! You added more \
+                    {product.name} to your shopping bag')
         else:
             bag[item_id] = quantity
             messages.success(
@@ -59,16 +63,20 @@ def update_bag(request, item_id):
     if size:
         if quantity > 0:
             bag[item_id]["items_by_size"][size] = quantity
-            messages.success(request, f'Updated "{product.name}" in size {size.upper()} to {bag[item_id]["items_by_size"][size]} items')
+            messages.success(request, f'Updated "{product.name}" \
+                in size {size.upper()} to \
+                    {bag[item_id]["items_by_size"][size]} items')
         else:
             del bag[item_id]["items_by_size"][size]
             if not bag[item_id]["items_by_size"]:
                 bag.pop()
-            messages.success(request, f'Removed "{product.name}", size {size.upper()}')
+            messages.success(request, f'Removed \
+                "{product.name}", size {size.upper()}')
     else:
         if quantity > 0:
             bag[item_id] = quantity
-            messages.success(request, f'Updated "{product.name}" quantity to {bag[item_id]} items')
+            messages.success(request, f'Updated \
+                "{product.name}" quantity to {bag[item_id]} items')
         else:
             bag.pop(item_id)
             messages.success(
@@ -92,7 +100,8 @@ def remove_item(request, item_id):
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)
                 messages.success(
-                    request, f'Removed "{product.name}", size {size.upper()} from your shopping bag')
+                    request, f'Removed "{product.name}", \
+                        size {size.upper()} from your shopping bag')
         else:
             bag.pop(item_id)
             messages.success(

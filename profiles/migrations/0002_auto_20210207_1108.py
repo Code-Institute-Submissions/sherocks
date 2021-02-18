@@ -13,11 +13,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='userprofile',
             name='default_first_name',
-            field=models.CharField(blank=True, max_length=80, null=True),
+            field=models.CharField(
+                blank=True, max_length=80, null=True),
         ),
         migrations.AddField(
             model_name='userprofile',
             name='default_last_name',
-            field=models.CharField(blank=True, max_length=80, null=True),
+            field=models.CharField(
+                blank=True, max_length=80, null=True),
         ),
     ]

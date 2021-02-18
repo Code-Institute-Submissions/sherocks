@@ -24,7 +24,8 @@ class StripeWH_Handler:
         company = Company.objects.first()
         print(company)
         employees = Employee.objects.all()
-        customer_service_representative = employees.get(role="CustomerService Representative")
+        customer_service_representative = employees.get(
+            role="CustomerService Representative")
         print(customer_service_representative)
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
@@ -33,7 +34,8 @@ class StripeWH_Handler:
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order,
              'contact_email': settings.DEFAULT_FROM_EMAIL,
-             'customer_service_representative': customer_service_representative,
+             'customer_service_representative': (
+                customer_service_representative),
              'company': company,
              }
             )
@@ -81,8 +83,10 @@ class StripeWH_Handler:
                 profile.default_country = shipping_details.address.country
                 profile.default_postcode = shipping_details.address.postal_code
                 profile.default_town_or_city = shipping_details.address.city
-                profile.default_street_address1 = shipping_details.address.line1
-                profile.default_street_address2 = shipping_details.address.line2
+                profile.default_street_address1 = (
+                    shipping_details.address.line1)
+                profile.default_street_address2 = (
+                    shipping_details.address.line2)
                 profile.default_county = shipping_details.address.state
                 profile.save()
 
@@ -112,7 +116,8 @@ class StripeWH_Handler:
         if order_exists:
             self._send_confirmation_email(order)
             return HttpResponse(
-                content=f'Webhook received: {event["type"]} | SUCCESS: Order already exists',
+                content=f'Webhook received: \
+                    {event["type"]} | SUCCESS: Order already exists',
                 status=200)
         else:
             order = None
@@ -141,7 +146,8 @@ class StripeWH_Handler:
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data['items_by_size'].items():
+                        for size, quantity in (
+                                item_data['items_by_size'].items()):
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
@@ -153,11 +159,13 @@ class StripeWH_Handler:
                 if order:
                     order.delete()
                 return HttpResponse(
-                    content=f'Webhook received: {event["type"]} | ERROR: {e}',
+                    content=f'Webhook received: \
+                        {event["type"]} | ERROR: {e}',
                     status=500)
         self.send_confirmation_order(order)
         return HttpResponse(
-            content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
+            content=f'Webhook received: \
+                {event["type"]} | SUCCESS: Created order in webhook',
             status=200)
 
     def handle_payment_intent_payment_failed(self, event):

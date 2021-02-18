@@ -400,6 +400,8 @@ In the future I will add:
 * A section about shipping: how long does it take to have a order shipped and then delivered,
 which courier takes care of the parcels, shipping fees, etc.
 
+* Add an icon at the bottom of the viewport that takes the user to the top of the page without having to scroll.
+
 * Functionality in the detail page that allows the user to go back to the exact point he/she was before clicking
 on the specific product. Now it takes back to the collection page, but it can be frustrating if a user was
 navigating in a specific category and had already scrolled down the page.
@@ -416,9 +418,17 @@ price, quantity).
 
 * Add a section about personal data processing (GDPR) -- very important to do if the website needs to be real!
 
+* Improve the styling inside the "Add review" area. I want to show the image of the product as the user hovers over
+ the option names (or click on one of them), because it is not easy to understand which product is just by reading
+ at the name. I want also to redirect the user to that specific product page after submitting the review.
+
 * Change styling on toasts messages to make them more similar to overlays on carousel, adding consistency.
 
 * Improve styling on 280px screens (see bug sections)
+
+* Write tests for each app in tests.py.
+
+* Resized images to speed the loading.
 
 ### Database
 
@@ -605,11 +615,231 @@ class Employee(models.Model):
 
 ## Testing
 
-### :heavy_check_mark: Functionality Testing 
+<details>
+
+<summary>Functionality Testing </summary>
+
+### Functionality Testing
+
+All the <strong>links</strong> are working.
+
+The <strong>form</strong> validation is handled by Django and it is working.
+
+<strong>HTML</strong> has been validated with [HTML Validator](https://validator.w3.org/) and everything was ok.
+Only a warning that the type attribute is unnecessary for JavaScript resources (```<script type="text/javascript">```).
+
+<strong>CSS</strong> has been validated with [CSS Validator](https://jigsaw.w3.org/css-validator/). I get an error that 
+the property ```backdrop-filter: blur``` does not exist. I have checked on Stackoverflow and I found that other people
+had the same issue. This is caused because the property is not currently supported on all browser (check also the section
+Bugs/Solved Bugs/Firefox for more details). The suggestion is to ignore the error.
+
+Other warnings are about CSS vendors prefix. They say that the prefixes are unknown, however they have been added using
+Autoprefixer which is a trustable source. Being only warnings, and being vendors important to support browser compatibility,
+ I decided to leave them.
+
+<strong>JavaScript</strong> has been checked with [JSHint](https://jshint.com/)
+
+For <strong>Python</strong> I used the command ```python3 -m flake8``` in my terminal to highlight all the issues in my project.
+Most of the errors were too long lines and errors DJ01 ("Avoid using null=True on string-based fields").
+
+I checked on Slack some hints on how I should proceed, so I corrected the lenght everywhere 
+except in settings.py and I left most of the erorrs DJ01.
+
+I left also 
+```
+./checkout/webhooks.py:28:5: F841 local variable 'e' is assigned to but never used
+./checkout/webhooks.py:31:5: F841 local variable 'e' is assigned to but never used
+./checkout/apps.py:8:9: F401 'checkout.signals' imported but unused
+```
+because they are important for the functionality.
+
+This is how it looks running the flake8 command after I fixed the code:
+
+![Flake8](static/readme-doc/testing/flake8.png)
+
+I successfully tested also payments using different credit cards provided by [Stripe](https://stripe.com/docs/testing#international-cards).
+
+I checked that the payment form adapts to the credit card number:
+
+If I enter a card that is in the U.S.A., I get the field for the ZIP code.
+    
+    Card Number: 4242 4242 4242 4242 | Date: any date in the future | CVC: any number | ZIP Code(example): 24242
+
+If I enter a card that is in the U.K., I get the field for the postal code.
+    
+    Card Number: 4000 0082 6000 0000 | Date: any date in the future | CVC: any number | Postal Code(example): SW1W 0NY
+
+If I enter a card that is in Australia, I don't get any additional field apart from the credit card details.
+    
+    Card Number: 4000 0003 6000 0006 | Date: any date in the future | CVC: any number 
+
+I tested the authorization for the payment:
+
+    Card number: 4000 0027 6000 3184
+
+I tested for a invalid CVC:
+     
+    Card number: 4000 0000 0000 0101
+
+I tested for insufficient founds;
+
+    Card number: 4000 0000 0000 9995
+
+I tested for stolen card:
+
+    Card number: 4000 0000 0000 9979
+
+I tested for expired card:
+
+    Card number: 4000 0000 0000 0069
 
 
-### :heavy_check_mark: Usability Testing
+</details>
 
+<details>
+<summary>Usability Testing </summary>
+
+### Usability Testing
+
+Going through the user stories, I tried to test the project with different scenarios on different devices
+ (laptop and mobile phone).
+
+#### As a customer
+
+* I want to browse through the categories to understand if there is something I might buy:
+
+    As I open the webiste, I first scroll down to have a look at the home page, then I go back to the top.
+    I read the names of the categories in the navigation bar and I click on one of them.
+
+    A page with all the items in that category opens, and I am able to sort the products in different ways (
+        price, brand, name
+    ).
+
+* I want to add something to my shopping bag:
+
+    When I find an item that I like, I can click on it and I reach the product detail page. Here I can view all
+     the details, such as material, sizes, description and reviews.
+    There is a button that allows me to add the item to the shopping bag and I can choose the right size and the 
+    amount I need. When I add something a toast appears on the top-right of the page, telling me that the item has been
+    successfully added.
+
+    I see also that on the top of the page there is a banner with a message, saying how many items I have inside my bag
+     and how much is the grand total right now that I should pay if I decide to complete the purchase.
+
+    There is also a count number next to the shopping bag icon inside the navbar.
+
+    At the bottom of the page I can see a carousel with some items that I might like. If I see something interesting,
+     I can click on the name of the product and I am redirected to that specific product page. From there, I can 
+     repeat the process (add item to the bag, click on another item and visit its page).
+
+![Add to Bag](static/readme-doc/testing/add.png)
+
+* I want to purchase something:
+     I have the chance to access my shopping bag in three ways: from the bag icon in the navbar, from the banner at
+      the top of the page clicking on the word "bag" (which stands out from the other words, so I understand it is a link),
+      or by clicking the button "View bag" that appears inside the toast when I add a new product.
+    
+    From my shopping bag, I can review all the items I added and I can also modify it. I can change the quantity per item
+     or remove the product. If I decide to update the quantity I see a toast with a message that confirms the updating, 
+     but I also can see that the price in the product row changes (it updates automatically), together with the grand total.
+    If I remove something, I get as well a toast with a confirmation and the product disapper from the bag. The price updates.
+
+    When I am satisfied with the content in the shopping bag, I can click on the button "Secure Checkout", that brings me 
+    to another page.
+    Here I find a form where I can enter my details.
+    If I am a registered user and I already logged in, I find my info already displayed inside the form. I can leave them
+     as they are and go on with the payment, or I can change them.
+    A checkout box allows me to save the information for the next time.
+    If I am not a registered user, I can complete anyway the purchase. The form in this case is empty and I can fill it 
+    with my details.
+
+    I enter my credit card information and the ZIP code if required. If the form is valid, the card is charged and my purchase
+     is complete. I am redirected to a page with the summary of my order and a toast confirms the successfully operation.
+    In my e-mail account I receive also an email with a brief summary and a contact of the employee repsonsible for the 
+    customer service in case I have questions.
+
+![Shopping Bag](static/readme-doc/testing/bag.png)
+
+![Order completed](static/readme-doc/testing/orderCompleted.png)
+
+* I want to register:
+    
+    I click on the profile icon and I see the link to the "Register" page.
+    I am redirected to a page with a form where I need to enter my email twice, a username and a password twice.
+    If something is wrong in my form (a wrong format) I am not allowed to submit and a message inside the form explains me what
+     I need to fix.
+    If the form is correct, I can submit it. I am redirected to a page that asks me to validate my email through a link
+     that has been automatically sent to the email address I provided. I open my emails and I find the email from
+      "She Rocks". I click on the link and my account is now verified. The "Sign In" page automatically opens and I can
+       log in with my new account.
+    
+![Sign Up](static/readme-doc/testing/signup.png)
+
+![Verify Email](static/readme-doc/testing/verifyEmail.jpg)
+
+![Email with verification link](static/readme-doc/testing/email-verify.png)
+
+* I want to add a review:
+
+    As a registered user I can perform tasks that are not available to non registered ones. One of them is the chance to
+     add a review.
+    From any page I can simply click on the profile icon. A dropdown menu with sub-links opens and I can select "My profile".
+    From this page, I can click on the section "My reviews" which is inside "My activity".
+    If I have already added reviews, I can find them here.
+    There is a button which says "Add review". I click on it and I am redirected to a page with a two fields form.
+    I can select from the dropdown menu the name of the product that I want to review, and in the text area below I can 
+    add my opinion on that product. I can save it by submitting the form. I am redirected to the collection page and 
+    a toast confirms that my review has been correctly added.
+
+* I want to log out:
+
+    I click on the user icon and I select the option "logout". I need to confirm if I really want to sign out, and if I 
+    click on the "sign out" button I am redirected to the home page, with a toast that confirms that now I signed out.
+
+#### As an admin
+
+* I want to add a product directly from the website:
+
+    I log in with my credentials. Being an admin I can access functionality that is not accessible to other users.
+
+    I can click on the user icon, select "Product Management" and I am redirected to a page where I can add a new product 
+    to the database. I click on "Add Product" and if the form is valid the product is successfully added. If not,
+     a message inside the forms tells me what is wrong.
+
+![Add New Item](static/readme-doc/testing/addToDatabase.png)
+
+![Added New Item](static/readme-doc/testing/addedNew.png)
+
+* I want to update details about a product from the website:
+
+    I log in with my credentials. Being an admin I can access functionality that is not accessible to other users.
+
+    On every page where an item is displayed, I see two options: "edit" or "delete".
+
+    If I want to update some info, I click on detail and I can now access a form. Inside each field I can see the 
+    product details that are already in the database. I click on the field that I want to update, change the value, and then 
+    click on the button "Update Product". If everything is correct, the form is validated and submitted.
+
+    I see a toast with a confirmation message and I am redirected to the collection page.
+
+![Edit Item](static/readme-doc/testing/editItem.png)
+
+* I want to delete a product from the website:
+
+    I log in with my credentials. Being an admin I can access functionality that is not accessible to other users.
+
+    On every page where an item is displayed, I see two options: "edit" or "delete".
+
+    I select "delete" and the item is automatically removed from the database. I am redirected to the collection
+     page and I get a toast confirmation.
+
+![Delete Item](static/readme-doc/testing/deleted.png)
+
+</details>
+
+<details>
+
+<summary>Compatibility Testing </summary>
 
 ### :heavy_check_mark: Compatibility Testing
 
@@ -627,9 +857,16 @@ Browsers:
 
 * Opera: no issues.
 
+</details>
+
+<details>
+
+<summary>Performance Testing </summary>
 
 ### :heavy_check_mark: Performance Testing
 
+To check performance testing I used Google Test Mobile Friendly, Google Lighthouse and Google PageSpeed Insights for the home page and all-artists page.
+</details>
 
 
 ### Bugs
@@ -677,7 +914,10 @@ and I applied the value inside the code.
 It happened a couple of times that an error 500 appeared random while navigating. The error disappeared by itself by refreshing
 after a few minutes.
 
-It was not possible to understand what caused the issue.
+It was not possible to understand what caused the issue because it happened randomly and only in a couple of occasions.
+
+I testsed the website many times, on multiple devices, and I asked friends to test as well. No one had the issue with
+the error 500.
 
 ---
 

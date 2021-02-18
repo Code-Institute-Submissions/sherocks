@@ -130,7 +130,8 @@ h5.card-title{
 }
 
 h2.page-title{
-    font-size: bold;
+    font-weight: bold;
+    margin-bottom: 3rem;
 }
 
 .btn-pink{
@@ -147,7 +148,7 @@ h2.page-title{
     font-size: 1.2rem;
 }
 
-.stripe-style-input option{
+option{
     font-size: 1.4rem;
 }
 
@@ -157,7 +158,7 @@ a{
     color: black;
 }
 
-.text-blockquote, figcaption{
+.text-blockquote, .blockquote-signature{
     color: whitesmoke;
 }
 

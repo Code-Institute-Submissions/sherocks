@@ -15,7 +15,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Category',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(
+                    auto_created=True, primary_key=True,
+                    serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=30)),
                 ('friendly_name', models.CharField(blank=True, max_length=50)),
             ],
@@ -23,7 +25,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Product',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(
+                    auto_created=True, primary_key=True,
+                    serialize=False, verbose_name='ID')),
                 ('sku', models.CharField(blank=True, max_length=254)),
                 ('name', models.CharField(max_length=160)),
                 ('brand', models.CharField(max_length=100)),
@@ -32,7 +36,10 @@ class Migration(migrations.Migration):
                 ('price', models.DecimalField(decimal_places=2, max_digits=6)),
                 ('image_url', models.URLField(max_length=1024)),
                 ('image', models.ImageField(blank=True, upload_to='')),
-                ('category', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='products.category')),
+                ('category', models.ForeignKey(
+                    blank=True, null=True,
+                    on_delete=django.db.models.deletion.SET_NULL,
+                    to='products.category')),
             ],
         ),
     ]
