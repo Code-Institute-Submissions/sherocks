@@ -925,8 +925,7 @@ the error 500.
 
 ## Deployment
 
-The website is deployed connecting Heroku with GitHub.
-
+The website has been deployed connecting Heroku with GitHub.
 
 #### Fork the code on GitHub
 If you need to work on this code on your own, follow these steps:
@@ -948,6 +947,94 @@ To make a local clone of the site, just follow these stepsg:
 * Open the directory where you want to work on the cloned code;
 * Type git clone followed by the link you have previously copied.
 
+* Create a file env.py and a file .gitignore.
+* Add env.py to .gitignore.
+* Set environment variables (you can choose if you want to set them in env.py or in GitPod settings - if you are using GitPod).
+    ```
+    import os
+
+    os.environ.setdefault('SECRET_KEY', '<your-value>')
+    os.environ.setdefault('DEVELOPMENT', '1')
+    os.environ.setdefault('ALLOWED_HOSTS', '<your-value>')
+    os.environ.setdefault('STRIPE_PUBLIC_KEY', '<your-value>')
+    os.environ.setdefault('STRIPE_SECRET_KEY', '<your-value>')
+    os.environ.setdefault('STRIPE_WH_SECRET_CH', '<your-value>')
+    os.environ.setdefault('STRIPE_WH_SECRET_SUB', '<your-value>')
+    os.environ.setdefault('SECRET_KEY', '<your-value>')
+    ```
+
+* install requirements from requirements.text
+    ```pip3 install -r requirements.txt ```
+
+* to run the server type in the terminal
+    ```python3 manage.py runserver```
+
+### Deploy to Heroku 
+
+Make sure to have those files in your project:
+
+* requirements.txt (type ```pip3 freeze > requirements.txt``` )
+
+* Procfile (inside type ```web: gunicorn your-app.wsgi:application```)
+
+Now go to Heroku, create an account if you don't have one, create a new app.
+
+* Select "Postgres" from resources
+
+![Postgres](static/readme-doc/deployment/3.png)
+
+* in settings.py comment out "DATABASES"
+
+* import dj_database_url
+
+* type in DATABASES 
+    ```'default': dj_database_url.parse("<your-postgres-url>")```
+
+* migrate the models
+    ```python3 manage.py makemigrations
+        python3 manage.py migrate
+    ```
+
+* migrate models to Postgres
+    ```python3 manage.py migrate```
+
+* load data to Postgres
+    ```python3 manage.py loaddata db.json```
+
+* create a superuser
+    ```python3 manage.py createsuperuser```
+
+* go back to settings.py, comment out 'default': dj_database_url.parse("<your-postgres-url>")`
+ and un-comment the section previously commented out.
+
+* Commit and push to GitHub
+    ``` 
+    git add .
+    git commit -m "Some text"
+    git push
+    ```
+
+* Go to Heroku and add those environment variables:
+
+![Configuration variables](static/readme-doc/deployment/configVars.png)
+
+* Click on the tab "Deploy" and connect with GitHub
+
+* Enable Automatic Deploy
+
+* Deploy Branch
+
+Create an account on AWS, and in [S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/GetStartedWithS3.html) open a bucket where you will store static/ files and media/ files.
+
+On Aws,
+
+* create a policy
+
+* create a group
+
+* create an access policy
+
+* create a user
 
 ---
 
@@ -955,9 +1042,29 @@ To make a local clone of the site, just follow these stepsg:
 
 ### :star: Code
 
+* [Boutique Ado from Code Institute](https://github.com/ckz8780/boutique_ado_v1) provided the base for the project.
+
+* Parallax effect in home page from https://youtu.be/llv5kW4sz0U
+
+* Neon effect adapted from https://redstapler.co/realistic-css-neon-text-effect-tutorial/ 
+
+* Shadow effect adapted from https://css-tricks.com/simulating-drop-shadows-with-the-css-paint-api/ 
+
+* Glassmorphism effect: code adapted and modified from https://glassmorphism.com/ 
+
+* Styling hr in footer: code adapted from https://tonys.se/artiklar/ovrigt/css-hur-du-gor-snygga-hr-taggar/
+
+* Source inspiration for neumorphism: https://css-tricks.com/neumorphism-and-css/
+
 ### :star: Media
 
+All images sources are linked ![here](static/readme-doc/wireframes/Links.pdf).
 
 ### :star: Acknowledgements
+
+Thank you to my mentor Spencer Barriball for his precious help.
+
+A special thanks also to the Code Institute Tutor Team, that has been always very nice helping with some issues that I faced
+ during the development.
 
 

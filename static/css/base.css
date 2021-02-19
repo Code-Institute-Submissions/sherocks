@@ -63,7 +63,7 @@ h2, h3, h4, h5, h6, .nav-item, a.nav-link, input, .btn{
 }
 
 a, .text, strong{
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 }
 
 .btn{
@@ -75,7 +75,7 @@ button span, a span, .btn-pink{
 }
 
 label{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 p, .card-text{
@@ -112,11 +112,11 @@ p, .alert, .text, strong {
 
 h5.card-title{
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 .text-shopping-bag{
-    font-size: 1.2rem;
+    font-size: 1.6rem;
 }
 
 .form-legend{
@@ -126,7 +126,7 @@ h5.card-title{
 
 .form-text, .alert-text{
     font-family: "Raleway", sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 h2.page-title{
@@ -145,11 +145,15 @@ h2.page-title{
 }
 
 .allauth-container label{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 option{
     font-size: 1.4rem;
+}
+
+option:hover{
+    font-style: italic;
 }
 
 /* -------------------------------- Palette */
@@ -180,6 +184,11 @@ a i, .pink-icon i{
 
 .danger-icon i{
     color: #dc3545;
+}
+
+option:active, option:focus{
+    color: rgb(219,98,151);
+    background-color: rgb(52, 21, 69);
 }
 
 a i:hover{
@@ -681,6 +690,7 @@ a{
 
 .card-img-top {
     height: 30rem;
+    width: 100%;
     -o-object-fit: contain;
        object-fit: contain;
 }

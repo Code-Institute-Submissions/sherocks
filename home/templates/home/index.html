@@ -74,6 +74,8 @@
 {% block postload_js %}
 {{ block.super }}
 <script>
+// Parallax effect adapted from https://youtu.be/llv5kW4sz0U
+
     const parallax = document.getElementById("first-block");
     const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
