@@ -860,7 +860,7 @@ Going through the user stories, I tried to test the project with different scena
 
 <summary>Compatibility Testing </summary>
 
-### :heavy_check_mark: Compatibility Testing
+### Compatibility Testing
 
 The website has been tested on laptop and mobile phone.
 
@@ -882,7 +882,7 @@ Browsers:
 
 <summary>Performance Testing </summary>
 
-### :heavy_check_mark: Performance Testing
+### Performance Testing
 
 To check performance testing I used Google Test Mobile Friendly, Google Lighthouse and Google PageSpeed Insights for the home page and all-artists page.
 
@@ -1110,7 +1110,7 @@ On Aws,
 
 ### :star: Media
 
-All images sources are linked ![here](static/readme-doc/wireframes/Links.pdf).
+All images sources are linked [here](static/readme-doc/Links.pdf).
 
 ### :star: Acknowledgements
 
