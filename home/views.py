@@ -11,7 +11,7 @@ def index(request):
     list_details = last_item.values()
     get_id_item = list_details[0]["id"]
     get_name_item = list_details[0]["name"]
-    get_image_url_item = list_details[0]["image_url"]
+    get_image_item = list_details[0]["image"]
     get_brand_item = list_details[0]["brand"]
 
     products = list(get_list)
@@ -24,7 +24,7 @@ def index(request):
     context = {
         "last_id": get_id_item,
         "last_name": get_name_item,
-        "last_image": get_image_url_item,
+        "last_image": get_image_item,
         "last_brand": get_brand_item,
         "first_product": first_product,
         "second_product": second_product,

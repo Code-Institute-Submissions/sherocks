@@ -866,6 +866,35 @@ Browsers:
 ### :heavy_check_mark: Performance Testing
 
 To check performance testing I used Google Test Mobile Friendly, Google Lighthouse and Google PageSpeed Insights for the home page and all-artists page.
+
+The biggest issue is in the loading of the pages due to images that are too big.
+
+It was already in my plan to resize all the images, since I already knew images were a problem, but after the performance testing
+
+I realized that this will be the first thing I am going to do after the first release. I will set the priority to improve performance.
+
+Those are the results:
+
+* Google Test Mobile Friendly
+
+![Results Goole Test Mobile Friendly](static/readme-doc/testing/mobileFriendly.png)
+
+* Lighthouse Mobile
+
+![Results Lighthouse Mobile](static/readme-doc/testing/lighthouseMobile.png)
+
+* Lighthouse Desktop
+
+![Results Lighthouse Desktop](static/readme-doc/testing/lighthouseDesktop.png)
+
+* Speed Insights Mobile
+
+![Results Speed Insights Mobile](static/readme-doc/testing/speedMobile.png)
+
+* Speed Insights Desktop
+
+![Results Speed Insights Desktop](static/readme-doc/testing/speedDesktop.png)
+
 </details>
 
 
