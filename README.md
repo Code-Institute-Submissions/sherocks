@@ -9,6 +9,22 @@ but specializing in rock chic style clothing.
 
 View the live project here. [She Rocks](https://sherocks.herokuapp.com/)
 
+If you want to test the functionality, you can use those details:
+
+* Username: testwebsite
+
+* Password: thisisapassword
+
+* Email: test@test.it
+
+Payment simulation:
+
+* Card: 4242 4242 4242 4242 (U.S.A.)
+
+* Date: any date in the future
+
+* CVC/ZIP: any integers
+
 
 ### :page_with_curl: Navigation Menu
 
@@ -429,6 +445,9 @@ price, quantity).
 * Write tests for each app in tests.py.
 
 * Resized images to speed the loading.
+
+* Add pagination.
+
 
 ### Database
 
@@ -871,7 +890,11 @@ The biggest issue is in the loading of the pages due to images that are too big.
 
 It was already in my plan to resize all the images, since I already knew images were a problem, but after the performance testing
 
-I realized that this will be the first thing I am going to do after the first release. I will set the priority to improve performance.
+I realized that this will be the first thing I am going to do after the first release.
+
+I will also add pagination.
+
+I will set the priority to improve performance.
 
 Those are the results:
 

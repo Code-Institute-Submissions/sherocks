@@ -120,7 +120,7 @@
                     </div>
                     <div class="row d-block d-lg-none">
                         <div class="col-12 text-center">
-                            <p>
+                            <p class="text-shopping-bag">
                                 {{ item.size|upper }}
                             </p>
                         </div>
@@ -128,7 +128,9 @@
                 </div>
 
                 <!--Product price-->
-                <div class="col-4 col-lg-2">&euro; {{ item.product.price|calc_subtotal:item.quantity }}</div>
+                <div class="col-4 col-lg-2">
+                    <p class="text-shopping-bag">&euro; {{ item.product.price|calc_subtotal:item.quantity }}</p>
+                </div>
 
             </div>
             <hr class="mb-3" />

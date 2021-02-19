@@ -11,7 +11,7 @@ def index(request):
     list_details = last_item.values()
     get_id_item = list_details[0]["id"]
     get_name_item = list_details[0]["name"]
-    get_image_item = list_details[0]["image"]
+    get_image_item = list_details[0]["image_url"]
     get_brand_item = list_details[0]["brand"]
 
     products = list(get_list)
