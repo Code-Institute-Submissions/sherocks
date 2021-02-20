@@ -22,11 +22,9 @@ class StripeWH_Handler:
         """Send the user a confirmation email"""
         customer_email = order.email
         company = Company.objects.first()
-        print(company)
         employees = Employee.objects.all()
         customer_service_representative = employees.get(
             role="CustomerService Representative")
-        print(customer_service_representative)
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
             {'order': order})
@@ -162,7 +160,7 @@ class StripeWH_Handler:
                     content=f'Webhook received: \
                         {event["type"]} | ERROR: {e}',
                     status=500)
-        self.send_confirmation_order(order)
+        self.send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook received: \
                 {event["type"]} | SUCCESS: Created order in webhook',
