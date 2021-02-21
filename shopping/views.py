@@ -1,7 +1,7 @@
 from django.shortcuts import (
     render, redirect, reverse, HttpResponse, get_object_or_404)
-from products.models import Product
 from django.contrib import messages
+from products.models import Product
 
 
 # View that renders the shopping bag page
@@ -11,7 +11,7 @@ def view_bag(request):
 
 # View that allows to add products to the shopping bag
 def add_to_bag(request, item_id):
-    product = Product.objects.get(pk=item_id)
+    product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get("quantity"))
     redirect_url = request.POST.get("redirect_url")
     size = None
@@ -69,7 +69,7 @@ def update_bag(request, item_id):
         else:
             del bag[item_id]["items_by_size"][size]
             if not bag[item_id]["items_by_size"]:
-                bag.pop()
+                bag.pop(item_id)
             messages.success(request, f'Removed \
                 "{product.name}", size {size.upper()}')
     else:
@@ -88,8 +88,9 @@ def update_bag(request, item_id):
 
 # View that allows to remove products form the shopping bag
 def remove_item(request, item_id):
-    product = Product.objects.get(pk=item_id)
+
     try:
+        product = get_object_or_404(Product, pk=item_id)
         size = None
         if 'product_size' in request.POST:
             size = request.POST['product_size']
@@ -112,5 +113,5 @@ def remove_item(request, item_id):
 
     except Exception as e:
         messages.error(
-            request, f'Something went wrong while removing item: {e}"')
+            request, f'Something went wrong while removing item: {e}')
         return HttpResponse(status=500)

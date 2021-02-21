@@ -742,6 +742,10 @@ a{
     cursor: pointer;
 }
 
+.qty-input{
+    height: 3.2rem;
+}
+
 .image-bag{
     height: 10rem;
 }
