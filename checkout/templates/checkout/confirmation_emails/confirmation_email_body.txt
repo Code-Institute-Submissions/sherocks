@@ -15,6 +15,11 @@ Grand Total: ${{ order.grand_total }}
 
 Your order will be shipped to {{ order.street_address1 }} in {{ order.town_or_city }}, {{ order.country }}.
 
+If you have a registered account on our website, just log in and access the "My Profile" section.
+Here you can check your order history and see all the items in your order.
+If you'd like, you can also share reviews of your new amazing clothes, so you can help other customers 
+with your feedback!
+
 If you have any questions, feel free to contact our Customer Service Representative:
 {{ customer_service_representative.full_name }} will be happy to help you.
 Connect with her via mail ({{ customer_service_representative.email }}), or phone ({{ customer_service_representative.phone_number }})

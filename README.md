@@ -594,6 +594,7 @@ class Employee(models.Model):
 * HTML5
 * CSS3
 * JavaScript
+* JQuery
 * Python 3.8.6
 
 ### Frameworks, Libraries & Programs Used
@@ -961,7 +962,7 @@ and I applied the value inside the code.
  The home page floats horizontally because the navbar is wider than the viewport.
  The pages are not centered.
 
-##### Error 500
+##### Error 500 - SOLVED -
 
 It happened a couple of times that an error 500 appeared random while navigating. The error disappeared by itself by refreshing
 after a few minutes.
@@ -970,6 +971,18 @@ It was not possible to understand what caused the issue because it happened rand
 
 I testsed the website many times, on multiple devices, and I asked friends to test as well. No one had the issue with
 the error 500.
+
+* Edit: Luckily, I had the issue with the error 500 while debugging. I realized that it happened only when someone tries to add 
+more items of the same product, if the product has sizes. I didn't notice before that the size disappeares and consequently it messes up with the
+ database. It happened because I forgot to add an hidden field in the form which has as a value the size of the product.
+```
+{% if item.product.has_sizes %}
+    <input type="hidden" name="product_size" value="{{ item.size }}">
+{% endif %}
+```
+Fixed that, I fixed also the script that updates the quantity in the form.
+
+I tested the website again, and now there are no errors 500 anymore.
 
 ---
 
@@ -1117,6 +1130,6 @@ All images sources are linked [here](static/readme-doc/Links.pdf).
 Thank you to my mentor Spencer Barriball for his precious help.
 
 A special thanks also to the Code Institute Tutor Team, that has been always very nice helping with some issues that I faced
- during the development.
+ during the development. A big thanks to Igor for his patience and courtesy.
 
-
+Thank you also to all my friends and family that took the time to test the website.
