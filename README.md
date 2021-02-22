@@ -955,6 +955,19 @@ and I applied the value inside the code.
 
 ![Bug on Firefox](static/readme-doc/testing/firefoxAfter.png)
 
+### Order over € 999999,99
+
+If a user tries to order for an amount higher than € 999999,99 he/she gets an error 500.
+
+This happens because Stripe allows only payments under that limit.
+
+To prevent the submission of an order that Stripe can't handle, I added a paragraph with property display set to none just below the checkout button.
+
+A script detects if the bag total goes over the limit: in that case the checkout button is disabled (and the
+ cursor is set to arrow), and the paragraph with the alert message is shown.
+
+![Alert on higher amount](static/readme-doc/testing/highAmount.png)
+
 #### Known bugs 
 
 ##### On 280px screens:

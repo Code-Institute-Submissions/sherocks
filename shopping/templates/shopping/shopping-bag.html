@@ -155,7 +155,7 @@
 
             <div class="row mt-5">
                 <div class="col">
-                    <p class="text-shopping-bag">
+                    <p class="text-shopping-bag bag-total" id="bag-total">
                         <strong>Bag Total:</strong> &euro; {{ total|floatformat:2 }}
                     </p>
                 </div>
@@ -196,6 +196,10 @@
 
                         <span class="text-uppercase">Secure Checkout</span>
                     </a>
+                    <p class="alert-amount uppercase mt-3">The amount is too high. <br>
+                        Please remove some items.<br>
+                        Maximum allowed for each transaction: € 999999,99.
+                    </p>
                 </div>
             </div>
 
@@ -220,6 +224,25 @@
 {{ block.super }}
 {% include "shopping/includes/quantity_input.html" %}
 <script type="text/javascript">
+
+    // Prevents to submit an order with an amount higher than 999999,99, not allowed by Stripe.
+    $(document).ready(function() {
+        var bagTotal = $(".bag-total").text().split("Bag Total: € ")[1];
+        var checkoutButton = $(".btn-checkout");
+
+        if (bagTotal > 999999) {
+            checkoutButton
+            .css('cursor', 'default')
+            .css('text-decoration', 'none');
+            $(".alert-amount").show( "fast" );
+        
+            checkoutButton.on("click", function(e) {
+            e.preventDefault();
+        });
+        };
+        
+    });
+    
     // Update quantity on click
     $('.update-link').click(function (e) {
         var itemId = $(this).attr("value").split('quantity_')[1];

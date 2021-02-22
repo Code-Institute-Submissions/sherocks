@@ -430,7 +430,6 @@ a{
 /* -------------------------------- Toasts */
 /* Neon effect adapted from https://redstapler.co/realistic-css-neon-text-effect-tutorial/ */
 .toast-message{
-    overflow: visible;
     -webkit-box-shadow:
     0 0 0.1vw  0.4vw #fff7f7,   
     0 0 0.4vw  0.6vw rgb(219,98,151),
@@ -448,7 +447,6 @@ a{
 }
 
 .toast-message-info{
-    overflow: visible;
     -webkit-box-shadow:
     0 0 0.1vw  0.4vw #fff7f7,   
     0 0 0.4vw  0.6vw rgba(255,255,255,.85), 
@@ -466,7 +464,6 @@ a{
 }
 
 .toast-message-warning{
-    overflow: visible;
     -webkit-box-shadow:
     0 0 0.1vw  0.4vw #fff7f7,   
     0 0 0.4vw  0.6vw rgba(255,255,255,.85), 
@@ -484,7 +481,6 @@ a{
 }
 
 .toast-message-error{
-    overflow: visible;
     -webkit-box-shadow:
     0 0 0.1vw  0.4vw #fff7f7,   
     0 0 0.4vw  0.6vw rgba(255,255,255,.85), 
@@ -748,6 +744,13 @@ a{
 
 .image-bag{
     height: 10rem;
+}
+
+.alert-amount{
+    display: none;
+    background-color: #dc3545;
+    color: whitesmoke;
+    font-weight: 600;
 }
 
 /* -------------------------------- Team */
