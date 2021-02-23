@@ -142,6 +142,37 @@ sales to add some random items just below the "add to bag" area.
 
 ![Detail Product](static/readme-doc/layout/detail.png)
 
+### :page_with_curl: Shopping Bag
+
+The shopping bag page has two columns. One with the list of the items in the bag, and the other one with a brief summary (total, shipping costs, 
+grand total).
+
+The user can add items of the same product by clicking the buttons "+" or "+", or by entering manually a number in the input field and then clicking 
+on the green icon to update. The price updates immediately, and so the total and grand total.
+
+It is possible to remove an item from the bag by clicking on the red icon with the dustbin.
+
+A purple banner with a message on the top of the page repeats the number of items in the bag and the total.
+
+![Shopping Bag Page](static/readme-doc/layout/shoppingBag.png)
+
+### :page_with_curl: Checkout
+
+The checkout page has a form where the user can add his/her personal details needed for the delivery and a field for the credit card number.
+
+As a reminder, there is the purple banner on the top with the number of items in the bag and the total amount (which is repeated just 
+above the form).
+
+![Checkout Page](static/readme-doc/layout/checkout.png)
+
+### :page_with_curl: Checkout Success Page
+
+After submitting an order, a summary of the order itself is shown in a page, with of course the confirmation that the order has been submitted.
+ At the bottom there us a button that allows the user to go back
+ to the Collection page.
+
+![Detail Product](static/readme-doc/layout/checkout-success.png)
+
 ### :page_with_curl: Team
 
 The team page shows all the team members, and for each employee there is the picture, the name, the name of the department,
@@ -614,7 +645,7 @@ class Employee(models.Model):
 * Django storages
 * Gunicorn
 * Pillow
-* Psycopg
+* Psycopg2
 * Boto3
 * Heroku
 * SQLite
@@ -629,6 +660,7 @@ class Employee(models.Model):
 * CSS Validator
 * JSHint
 * Autoprefixer CSS 9.7.6
+* Flake8
 
 
 ---

@@ -742,6 +742,14 @@ a{
     height: 3.2rem;
 }
 
+button i.update-icon{
+    color: green;
+}
+
+button i.remove-icon{
+    color: #dc3545;
+}
+
 .image-bag{
     height: 10rem;
 }
