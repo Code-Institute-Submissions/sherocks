@@ -76,7 +76,7 @@
                                                 {{ order.order_number|truncatechars:6 }}
                                             </a>
                                         </td>
-                                        <td>{{ order.date }}</td>
+                                        <td class="font-weight-light font-italic">{{ order.date }}</td>
                                         <td>
                                             <ul class="list-unstyled">
                                                 {% for item in order.lineitems.all %}
@@ -122,7 +122,7 @@
                             {% if reviews %}
                             <ul>
                             {% for i in reviews %}
-                            <li><strong>{{ i.product }}</strong>: "{{ i.review }}", created on the {{ i.created }}</li>
+                            <li class="review-text"><strong>{{ i.product }}</strong>: "{{ i.review }}", <span class="review-text font-weight-light font-italic ">created on the {{ i.created }}</span></li>
                             {% endfor %}
                             </ul>
                             {% else %}

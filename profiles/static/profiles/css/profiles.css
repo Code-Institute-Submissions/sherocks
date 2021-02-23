@@ -6,7 +6,7 @@
     font-size: 1.6rem;
 }
 
-.card-history td{
+.card-history td, .review-text{
     font-size: 1.4rem;
 }
 
