@@ -1,0 +1,24 @@
+.card-history, .card-review{
+    width: 100%;
+}
+
+.card-history th{
+    font-size: 1.6rem;
+}
+
+.card-history td{
+    font-size: 1.4rem;
+}
+
+.card-history li.small{
+    font-size: 1.4rem;
+}
+
+th{
+    font-family: "Raleway", sans-serif;
+    text-transform: uppercase;
+}
+
+.table-header{
+    border-bottom: 1px solid black;
+}

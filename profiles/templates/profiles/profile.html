@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'checkout/css/profile.css' %}">
+<link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
 {% endblock %}
 
 {% block extra_title %}Profile{% endblock %}
@@ -17,7 +17,7 @@
 <div class="container">
     <div class="row mt-5">
         <!--List of items in bag-->
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-lg-6">
             <div class="row mt-5 mb-3">
                 <div class="col total-items-in-bag uppercase">
                     <h4>Default Delivery Information</h4>
@@ -43,7 +43,7 @@
 
 
             <div id="accordion">
-                <div class="card">
+                <div class="card card-history">
                     <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
                             <button class="btn btn-link uppercase button-accordion" data-toggle="collapse" data-target="#collapseOne"
@@ -59,7 +59,7 @@
                             <div class="table responsive">
                             <!--Table content from Boutique Ado-Code Institute-->
                             <table class="table table-sm table-borderless">
-                                <thead>
+                                <thead class="table-header">
                                     <tr>
                                         <th>Order Number</th>
                                         <th>Date</th>
@@ -72,7 +72,7 @@
                                     <tr>
                                         <td>
                                             <a href="{% url 'order_history' order.order_number %}"
-                                                title="{{ order.order_number }}">
+                                                title="{{ order.order_number }}" class="order-number">
                                                 {{ order.order_number|truncatechars:6 }}
                                             </a>
                                         </td>
@@ -108,7 +108,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card card-review">
                     <div class="card-header" id="headingTwo">
                         <h5 class="mb-0">
                             <button class="btn btn-link collapsed uppercase button-accordion" data-toggle="collapse" data-target="#collapseTwo"
